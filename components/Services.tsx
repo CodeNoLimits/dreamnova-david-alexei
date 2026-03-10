@@ -8,58 +8,65 @@ const serviceData = [
   {
     num: "01",
     accent: "#8B7FFF",
-    gradient: "135deg, rgba(139,127,255,0.14) 0%, rgba(106,95,255,0.06) 60%, transparent 100%",
-    iconBg: "rgba(139,127,255,0.12)",
-    iconBorder: "rgba(139,127,255,0.22)",
-    tagBg: "rgba(139,127,255,0.1)",
-    tagBorder: "rgba(139,127,255,0.25)",
+    // Unsplash: sleek laptop with beautiful website on screen
+    imgUrl: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=900&q=75",
+    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(20,16,50,0.85) 55%, rgba(139,127,255,0.15) 100%",
+    iconBg: "rgba(139,127,255,0.15)",
+    iconBorder: "rgba(139,127,255,0.3)",
+    tagBg: "rgba(139,127,255,0.12)",
+    tagBorder: "rgba(139,127,255,0.3)",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="2" y="5" width="22" height="16" rx="3" stroke="#8B7FFF" strokeWidth="1.6"/>
-        <path d="M2 9.5h22" stroke="#8B7FFF" strokeWidth="1.6"/>
-        <circle cx="6" cy="7.2" r="0.9" fill="#8B7FFF"/>
-        <circle cx="9.2" cy="7.2" r="0.9" fill="#8B7FFF" opacity="0.5"/>
-        <rect x="6" y="13" width="8" height="1.6" rx="0.8" fill="#8B7FFF" opacity="0.5"/>
-        <rect x="6" y="16.5" width="5" height="1.6" rx="0.8" fill="#8B7FFF" opacity="0.3"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="4" width="20" height="14" rx="2.5" stroke="#8B7FFF" strokeWidth="1.6"/>
+        <path d="M2 8.5h20" stroke="#8B7FFF" strokeWidth="1.6"/>
+        <circle cx="5.5" cy="6.3" r="0.8" fill="#8B7FFF"/>
+        <circle cx="8" cy="6.3" r="0.8" fill="#8B7FFF" opacity="0.5"/>
+        <rect x="5" y="12" width="7" height="1.4" rx="0.7" fill="#8B7FFF" opacity="0.5"/>
+        <rect x="5" y="14.8" width="4.5" height="1.4" rx="0.7" fill="#8B7FFF" opacity="0.3"/>
+        <path d="M8 22h8M12 18v4" stroke="#8B7FFF" strokeWidth="1.6" strokeLinecap="round"/>
       </svg>
     ),
   },
   {
     num: "02",
     accent: "#64DFDF",
-    gradient: "135deg, rgba(100,223,223,0.14) 0%, rgba(45,212,191,0.06) 60%, transparent 100%",
-    iconBg: "rgba(100,223,223,0.12)",
-    iconBorder: "rgba(100,223,223,0.22)",
+    // Unsplash: futuristic AI neural network visualization
+    imgUrl: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=75",
+    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(10,30,35,0.85) 55%, rgba(100,223,223,0.15) 100%",
+    iconBg: "rgba(100,223,223,0.15)",
+    iconBorder: "rgba(100,223,223,0.3)",
     tagBg: "rgba(100,223,223,0.1)",
-    tagBorder: "rgba(100,223,223,0.25)",
+    tagBorder: "rgba(100,223,223,0.3)",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <circle cx="13" cy="13" r="4" stroke="#64DFDF" strokeWidth="1.6"/>
-        <circle cx="5.5" cy="7" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
-        <circle cx="20.5" cy="7" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
-        <circle cx="5.5" cy="19" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
-        <circle cx="20.5" cy="19" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
-        <path d="M7.5 8.5l3.5 3M15 14.5l3.5 3.5M18.5 8.5l-3.5 3M11 14.5l-3.5 3.5" stroke="#64DFDF" strokeWidth="1.1" opacity="0.45"/>
-        <circle cx="13" cy="13" r="1.8" fill="#64DFDF" opacity="0.75"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="3.5" stroke="#64DFDF" strokeWidth="1.6"/>
+        <circle cx="4.5" cy="6" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
+        <circle cx="19.5" cy="6" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
+        <circle cx="4.5" cy="18" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
+        <circle cx="19.5" cy="18" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
+        <path d="M6.2 7l3.5 3M14.3 14l3.5 3.5M17.8 7l-3.5 3M9.7 14l-3.5 3.5" stroke="#64DFDF" strokeWidth="1.1" opacity="0.5"/>
+        <circle cx="12" cy="12" r="1.5" fill="#64DFDF" opacity="0.8"/>
       </svg>
     ),
   },
   {
     num: "03",
     accent: "#FF8A80",
-    gradient: "135deg, rgba(255,138,128,0.14) 0%, rgba(255,107,107,0.06) 60%, transparent 100%",
-    iconBg: "rgba(255,138,128,0.12)",
-    iconBorder: "rgba(255,138,128,0.22)",
+    // Unsplash: person filming/creating content with phone, warm studio light
+    imgUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=900&q=75",
+    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(35,12,12,0.85) 55%, rgba(255,138,128,0.15) 100%",
+    iconBg: "rgba(255,138,128,0.15)",
+    iconBorder: "rgba(255,138,128,0.3)",
     tagBg: "rgba(255,138,128,0.1)",
-    tagBorder: "rgba(255,138,128,0.25)",
+    tagBorder: "rgba(255,138,128,0.3)",
     icon: (
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-        <rect x="3" y="5" width="13" height="17" rx="2.5" stroke="#FF8A80" strokeWidth="1.6"/>
-        <circle cx="20" cy="9" r="4.5" stroke="#FF8A80" strokeWidth="1.4" opacity="0.6"/>
-        <path d="M18 9h4M20 7v4" stroke="#FF8A80" strokeWidth="1.4" opacity="0.6" strokeLinecap="round"/>
-        <rect x="6" y="10" width="6" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.45"/>
-        <rect x="6" y="13.5" width="8" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.35"/>
-        <rect x="6" y="17" width="4" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.25"/>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <rect x="2" y="4" width="11" height="14" rx="2" stroke="#FF8A80" strokeWidth="1.6"/>
+        <circle cx="17" cy="8" r="3.8" stroke="#FF8A80" strokeWidth="1.4" opacity="0.65"/>
+        <path d="M15.2 8h3.6M17 6.2V9.8" stroke="#FF8A80" strokeWidth="1.4" opacity="0.65" strokeLinecap="round"/>
+        <rect x="4.5" y="8" width="5.5" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.4"/>
+        <rect x="4.5" y="11" width="7" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.3"/>
+        <rect x="4.5" y="14" width="3.5" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.2"/>
       </svg>
     ),
   },
@@ -75,15 +82,15 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative z-10 py-28 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="services" className="relative z-10 py-28 px-4 sm:px-6 overflow-x-hidden">
+      <div className="max-w-6xl mx-auto w-full">
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-20 px-2"
         >
           <span className="inline-block px-4 py-1.5 rounded-full mb-6 text-[11px] font-mono font-bold uppercase tracking-[0.25em] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20 text-[var(--accent-lavender)]">
             {t("label")}
@@ -91,13 +98,13 @@ export default function Services() {
           <h2 className="text-4xl md:text-[52px] font-black text-white mb-5 leading-[1.1] tracking-tight">
             {t("title")}
           </h2>
-          <p className="text-lg text-white/50 max-w-lg mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-white/50 max-w-md mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-5">
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
           {services.map((svc, i) => (
             <motion.div
               key={i}
@@ -105,74 +112,81 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.11 }}
-              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer select-none"
-              style={{ minHeight: 320 }}
+              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer"
+              style={{ minHeight: 360 }}
             >
-              {/* Background gradient layer */}
-              <div className="absolute inset-0" style={{ background: `linear-gradient(${svc.gradient})` }} />
-              {/* Glass */}
+              {/* ── Background image ── */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={svc.imgUrl}
+                alt=""
+                aria-hidden
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+
+              {/* ── Gradient overlay ── */}
               <div
                 className="absolute inset-0"
-                style={{
-                  background: "rgba(255,255,255,0.025)",
-                  backdropFilter: "blur(20px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                }}
+                style={{ background: `linear-gradient(${svc.gradient})` }}
               />
-              {/* Border (base) */}
+
+              {/* ── Border ── */}
               <div
-                className="absolute inset-0 rounded-[22px]"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                className="absolute inset-0 rounded-[22px] transition-all duration-500"
+                style={{ border: "1px solid rgba(255,255,255,0.1)" }}
               />
-              {/* Border hover glow */}
+              {/* ── Hover border glow ── */}
               <div
                 className="absolute inset-0 rounded-[22px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ boxShadow: `inset 0 0 0 1px ${svc.accent}45, 0 24px 64px ${svc.accent}10` }}
+                style={{ boxShadow: `inset 0 0 0 1.5px ${svc.accent}55, 0 30px 70px ${svc.accent}12` }}
               />
-              {/* Top shimmer line */}
+              {/* ── Top shimmer ── */}
               <div
-                className="absolute top-0 inset-x-0 h-px transition-opacity duration-500 opacity-50 group-hover:opacity-100"
-                style={{ background: `linear-gradient(90deg, transparent 0%, ${svc.accent}90 50%, transparent 100%)` }}
+                className="absolute top-0 inset-x-0 h-[1px] opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `linear-gradient(90deg, transparent, ${svc.accent}, transparent)` }}
               />
 
-              {/* Inner content */}
-              <div className="relative z-10 flex flex-col h-full p-8 gap-5">
+              {/* ── Content ── */}
+              <div className="relative z-10 flex flex-col h-full p-8 gap-4">
 
-                {/* Top row: icon + number */}
+                {/* Top row */}
                 <div className="flex items-start justify-between">
-                  {/* Icon box */}
                   <div
-                    className="w-12 h-12 rounded-[14px] flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+                    className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: svc.iconBg,
                       border: `1px solid ${svc.iconBorder}`,
+                      backdropFilter: "blur(8px)",
                     }}
                   >
                     {svc.icon}
                   </div>
-                  {/* Step number */}
                   <span
-                    className="text-[11px] font-mono font-bold tracking-widest"
-                    style={{ color: `${svc.accent}60` }}
+                    className="text-[11px] font-mono font-bold tracking-widest mt-1"
+                    style={{ color: `${svc.accent}70` }}
                   >
                     {svc.num}
                   </span>
                 </div>
 
+                {/* Spacer to push content to bottom */}
+                <div className="flex-1" />
+
                 {/* Title */}
-                <h3 className="text-[22px] font-extrabold text-white leading-snug tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
+                <h3 className="text-[21px] font-extrabold text-white leading-snug tracking-tight">
                   {svc.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[14px] text-white/50 leading-[1.75] flex-grow">
+                <p className="text-[13.5px] text-white/60 leading-[1.7]">
                   {svc.desc}
                 </p>
 
-                {/* Footer row */}
-                <div className="flex items-center justify-between pt-2 border-t border-white/[0.06]">
+                {/* Footer */}
+                <div className="flex items-center justify-between pt-4 mt-1 border-t border-white/[0.07]">
                   <span
-                    className="text-[11px] font-mono font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    className="text-[10px] font-mono font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
                     style={{
                       background: svc.tagBg,
                       border: `1px solid ${svc.tagBorder}`,
@@ -182,10 +196,11 @@ export default function Services() {
                     {svc.tag}
                   </span>
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 group-hover:translate-x-0"
                     style={{
-                      background: `${svc.accent}15`,
+                      background: `${svc.accent}18`,
                       color: svc.accent,
+                      border: `1px solid ${svc.accent}30`,
                     }}
                   >
                     <ArrowUpRight size={14} strokeWidth={2.5} />

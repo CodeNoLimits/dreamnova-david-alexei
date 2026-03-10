@@ -101,44 +101,56 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right — floating UI card decoration (desktop only) */}
+        {/* Right — cinematic image card (desktop only) */}
         <div className="hidden lg:flex justify-center items-center relative">
-          <div
-            className="relative w-80 h-64 rounded-2xl p-6"
-            style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              backdropFilter: "blur(24px)",
-              boxShadow: "0 25px 50px rgba(0,0,0,0.5)",
-            }}
+          <div className="relative w-full max-w-md rounded-[24px] overflow-hidden"
+            style={{ boxShadow: "0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08)" }}
           >
-            {/* Mock UI inside card */}
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 rounded-full" style={{ background: "#FF8A80" }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "#FFD93D" }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "#64DFDF" }} />
-              <div className="flex-1 h-1.5 rounded-full ms-2" style={{ background: "rgba(255,255,255,0.06)" }} />
-            </div>
-            <div className="space-y-2 mb-4">
-              <div className="h-2.5 rounded-full w-3/4" style={{ background: "rgba(139,127,255,0.3)" }} />
-              <div className="h-2.5 rounded-full w-full" style={{ background: "rgba(255,255,255,0.06)" }} />
-              <div className="h-2.5 rounded-full w-5/6" style={{ background: "rgba(255,255,255,0.06)" }} />
-            </div>
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {["#6961ff", "#2DD4BF", "#FBBF24"].map((c, i) => (
-                <div key={i} className="h-16 rounded-xl" style={{ background: `${c}20`, border: `1px solid ${c}30` }} />
+            {/* Main image — Jerusalem craftsman */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80"
+              alt="Digital business transformation"
+              className="w-full h-72 object-cover"
+            />
+            {/* Overlay gradient */}
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,6,18,0.98) 0%, rgba(6,6,18,0.4) 60%, transparent 100%)" }} />
+
+            {/* Floating stat cards */}
+            <div className="absolute bottom-0 left-0 right-0 p-5 flex gap-3">
+              {[
+                { num: "12+", label: "Clients", color: "#8B7FFF" },
+                { num: "3×", label: "More Leads", color: "#64DFDF" },
+                { num: "48h", label: "Go Live", color: "#FFD93D" },
+              ].map((s) => (
+                <div
+                  key={s.num}
+                  className="flex-1 rounded-xl p-3 text-center"
+                  style={{
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    backdropFilter: "blur(12px)",
+                  }}
+                >
+                  <div className="text-xl font-black" style={{ color: s.color, fontFamily: "var(--font-space-mono)" }}>{s.num}</div>
+                  <div className="text-[10px] text-white/50 uppercase tracking-wider mt-0.5">{s.label}</div>
+                </div>
               ))}
             </div>
-            <div className="flex gap-2">
-              <div className="w-2 h-2 rounded-full" style={{ background: "#2DD4BF" }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "#6961ff", opacity: 0.5 }} />
-              <div className="w-2 h-2 rounded-full" style={{ background: "#FBBF24", opacity: 0.5 }} />
+
+            {/* Live badge */}
+            <div className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full"
+              style={{ background: "rgba(0,0,0,0.6)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] font-mono text-white/70 uppercase tracking-widest">Live Projects</span>
             </div>
           </div>
-          {/* Decorative glow behind card */}
+
+          {/* Glow */}
           <div
-            className="absolute inset-0 rounded-2xl"
-            style={{ background: "radial-gradient(circle, rgba(105,97,255,0.15), transparent 70%)", filter: "blur(40px)" }}
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: "radial-gradient(circle at center, rgba(139,127,255,0.12), transparent 70%)", filter: "blur(40px)" }}
           />
         </div>
       </div>
