@@ -226,10 +226,10 @@ export default function Process() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-20 flex flex-col items-center gap-6"
+          className="mt-20 flex flex-col items-center justify-center gap-6 text-center w-full"
         >
           <div
-            className="flex items-center gap-2 px-4 py-2 rounded-full"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full"
             style={{
               background: "rgba(100,223,223,0.08)",
               border: "1px solid rgba(100,223,223,0.2)",
@@ -241,23 +241,19 @@ export default function Process() {
             </span>
           </div>
 
-          <button
-            onClick={() => document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" })}
-            className="group relative px-10 py-4 rounded-full font-bold text-white overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
+          <a
+            href="#cta"
+            onClick={(e) => { e.preventDefault(); document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" }); }}
+            className="group relative inline-flex items-center justify-center px-10 py-4 rounded-full font-black text-white transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
               background: "linear-gradient(135deg, #8B7FFF, #6A5FFF)",
-              boxShadow: "0 8px 30px rgba(139,127,255,0.4)",
-              fontFamily: "var(--font-space-mono)",
-              letterSpacing: "0.1em",
+              boxShadow: "0 8px 32px rgba(139,127,255,0.45)",
+              letterSpacing: "0.08em",
               fontSize: "13px",
             }}
           >
-            <span className="relative z-10">{t("cta_start") || "BEGIN YOUR TRANSFORMATION"}</span>
-            <div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-              style={{ background: "linear-gradient(135deg, #9B8FFF, #7A6FFF)" }}
-            />
-          </button>
+            {t("cta_start") ?? "BEGIN YOUR TRANSFORMATION"}
+          </a>
         </motion.div>
       </div>
     </section>

@@ -2,61 +2,66 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const serviceData = [
   {
-    icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <rect x="4" y="8" width="28" height="20" rx="3" stroke="#8B7FFF" strokeWidth="1.8" />
-        <path d="M4 13h28" stroke="#8B7FFF" strokeWidth="1.8" />
-        <circle cx="8" cy="10.5" r="1" fill="#8B7FFF" />
-        <circle cx="12" cy="10.5" r="1" fill="#8B7FFF" opacity="0.5" />
-        <circle cx="16" cy="10.5" r="1" fill="#8B7FFF" opacity="0.3" />
-        <rect x="9" y="18" width="10" height="2" rx="1" fill="#8B7FFF" opacity="0.5" />
-        <rect x="9" y="22" width="6" height="2" rx="1" fill="#8B7FFF" opacity="0.3" />
-      </svg>
-    ),
+    num: "01",
     accent: "#8B7FFF",
-    gradient: "from-[#8B7FFF]/15 via-[#6A5FFF]/8 to-transparent",
-    borderGlow: "rgba(139,127,255,0.35)",
-    tagBg: "rgba(139,127,255,0.12)",
-    tagBorder: "rgba(139,127,255,0.3)",
-  },
-  {
+    gradient: "135deg, rgba(139,127,255,0.14) 0%, rgba(106,95,255,0.06) 60%, transparent 100%",
+    iconBg: "rgba(139,127,255,0.12)",
+    iconBorder: "rgba(139,127,255,0.22)",
+    tagBg: "rgba(139,127,255,0.1)",
+    tagBorder: "rgba(139,127,255,0.25)",
     icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <circle cx="18" cy="18" r="6" stroke="#64DFDF" strokeWidth="1.8" />
-        <circle cx="8" cy="10" r="3" stroke="#64DFDF" strokeWidth="1.5" opacity="0.6" />
-        <circle cx="28" cy="10" r="3" stroke="#64DFDF" strokeWidth="1.5" opacity="0.6" />
-        <circle cx="8" cy="26" r="3" stroke="#64DFDF" strokeWidth="1.5" opacity="0.6" />
-        <circle cx="28" cy="26" r="3" stroke="#64DFDF" strokeWidth="1.5" opacity="0.6" />
-        <path d="M11 10.5L15 15M21 21L25 25.5M25 10.5L21 15M15 21L11 25.5" stroke="#64DFDF" strokeWidth="1.2" opacity="0.5" />
-        <circle cx="18" cy="18" r="2.5" fill="#64DFDF" opacity="0.8" />
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect x="2" y="5" width="22" height="16" rx="3" stroke="#8B7FFF" strokeWidth="1.6"/>
+        <path d="M2 9.5h22" stroke="#8B7FFF" strokeWidth="1.6"/>
+        <circle cx="6" cy="7.2" r="0.9" fill="#8B7FFF"/>
+        <circle cx="9.2" cy="7.2" r="0.9" fill="#8B7FFF" opacity="0.5"/>
+        <rect x="6" y="13" width="8" height="1.6" rx="0.8" fill="#8B7FFF" opacity="0.5"/>
+        <rect x="6" y="16.5" width="5" height="1.6" rx="0.8" fill="#8B7FFF" opacity="0.3"/>
       </svg>
     ),
+  },
+  {
+    num: "02",
     accent: "#64DFDF",
-    gradient: "from-[#64DFDF]/15 via-[#2DD4BF]/8 to-transparent",
-    borderGlow: "rgba(100,223,223,0.35)",
-    tagBg: "rgba(100,223,223,0.12)",
-    tagBorder: "rgba(100,223,223,0.3)",
-  },
-  {
+    gradient: "135deg, rgba(100,223,223,0.14) 0%, rgba(45,212,191,0.06) 60%, transparent 100%",
+    iconBg: "rgba(100,223,223,0.12)",
+    iconBorder: "rgba(100,223,223,0.22)",
+    tagBg: "rgba(100,223,223,0.1)",
+    tagBorder: "rgba(100,223,223,0.25)",
     icon: (
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <rect x="5" y="7" width="16" height="22" rx="3" stroke="#FF8A80" strokeWidth="1.8" />
-        <circle cx="27" cy="13" r="6" stroke="#FF8A80" strokeWidth="1.5" opacity="0.6" />
-        <path d="M24 13h6M27 10v6" stroke="#FF8A80" strokeWidth="1.5" opacity="0.6" strokeLinecap="round" />
-        <rect x="8" y="12" width="7" height="1.5" rx="0.75" fill="#FF8A80" opacity="0.5" />
-        <rect x="8" y="16" width="10" height="1.5" rx="0.75" fill="#FF8A80" opacity="0.4" />
-        <rect x="8" y="20" width="5" height="1.5" rx="0.75" fill="#FF8A80" opacity="0.3" />
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="4" stroke="#64DFDF" strokeWidth="1.6"/>
+        <circle cx="5.5" cy="7" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
+        <circle cx="20.5" cy="7" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
+        <circle cx="5.5" cy="19" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
+        <circle cx="20.5" cy="19" r="2.2" stroke="#64DFDF" strokeWidth="1.4" opacity="0.55"/>
+        <path d="M7.5 8.5l3.5 3M15 14.5l3.5 3.5M18.5 8.5l-3.5 3M11 14.5l-3.5 3.5" stroke="#64DFDF" strokeWidth="1.1" opacity="0.45"/>
+        <circle cx="13" cy="13" r="1.8" fill="#64DFDF" opacity="0.75"/>
       </svg>
     ),
+  },
+  {
+    num: "03",
     accent: "#FF8A80",
-    gradient: "from-[#FF8A80]/15 via-[#FF6B6B]/8 to-transparent",
-    borderGlow: "rgba(255,138,128,0.35)",
-    tagBg: "rgba(255,138,128,0.12)",
-    tagBorder: "rgba(255,138,128,0.3)",
+    gradient: "135deg, rgba(255,138,128,0.14) 0%, rgba(255,107,107,0.06) 60%, transparent 100%",
+    iconBg: "rgba(255,138,128,0.12)",
+    iconBorder: "rgba(255,138,128,0.22)",
+    tagBg: "rgba(255,138,128,0.1)",
+    tagBorder: "rgba(255,138,128,0.25)",
+    icon: (
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <rect x="3" y="5" width="13" height="17" rx="2.5" stroke="#FF8A80" strokeWidth="1.6"/>
+        <circle cx="20" cy="9" r="4.5" stroke="#FF8A80" strokeWidth="1.4" opacity="0.6"/>
+        <path d="M18 9h4M20 7v4" stroke="#FF8A80" strokeWidth="1.4" opacity="0.6" strokeLinecap="round"/>
+        <rect x="6" y="10" width="6" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.45"/>
+        <rect x="6" y="13.5" width="8" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.35"/>
+        <rect x="6" y="17" width="4" height="1.4" rx="0.7" fill="#FF8A80" opacity="0.25"/>
+      </svg>
+    ),
   },
 ];
 
@@ -70,100 +75,104 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="relative z-10 py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="services" className="relative z-10 py-28 px-6">
+      <div className="max-w-6xl mx-auto">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full mb-5 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent-lavender)] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20">
+          <span className="inline-block px-4 py-1.5 rounded-full mb-6 text-[11px] font-mono font-bold uppercase tracking-[0.25em] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20 text-[var(--accent-lavender)]">
             {t("label")}
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-5 leading-tight">
+          </span>
+          <h2 className="text-4xl md:text-[52px] font-black text-white mb-5 leading-[1.1] tracking-tight">
             {t("title")}
           </h2>
-          <p className="text-lg text-white/50 max-w-xl mx-auto leading-relaxed">
+          <p className="text-lg text-white/50 max-w-lg mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        {/* Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-5">
           {services.map((svc, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.12 }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer flex flex-col"
-              style={{ minHeight: 340 }}
+              transition={{ delay: i * 0.11 }}
+              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer select-none"
+              style={{ minHeight: 320 }}
             >
-              {/* Background gradient */}
+              {/* Background gradient layer */}
+              <div className="absolute inset-0" style={{ background: `linear-gradient(${svc.gradient})` }} />
+              {/* Glass */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${svc.gradient} opacity-100`}
-              />
-              {/* Glass base */}
-              <div
-                className="absolute inset-0 transition-all duration-500 group-hover:opacity-80"
+                className="absolute inset-0"
                 style={{
-                  background: "rgba(255,255,255,0.035)",
-                  backdropFilter: "blur(24px)",
-                  WebkitBackdropFilter: "blur(24px)",
+                  background: "rgba(255,255,255,0.025)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
                 }}
               />
-              {/* Border */}
+              {/* Border (base) */}
               <div
-                className="absolute inset-0 rounded-2xl transition-all duration-500"
-                style={{
-                  border: `1px solid rgba(255,255,255,0.09)`,
-                  boxShadow: `inset 0 1px 0 rgba(255,255,255,0.08)`,
-                }}
+                className="absolute inset-0 rounded-[22px]"
+                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
               />
-              {/* Hover border glow */}
+              {/* Border hover glow */}
               <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ boxShadow: `0 0 0 1px ${svc.borderGlow}, 0 20px 60px ${svc.accent}15` }}
+                className="absolute inset-0 rounded-[22px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ boxShadow: `inset 0 0 0 1px ${svc.accent}45, 0 24px 64px ${svc.accent}10` }}
               />
-              {/* Top accent line */}
+              {/* Top shimmer line */}
               <div
-                className="absolute top-0 left-0 right-0 h-0.5 opacity-60 group-hover:opacity-100 transition-opacity"
-                style={{ background: `linear-gradient(90deg, transparent, ${svc.accent}, transparent)` }}
+                className="absolute top-0 inset-x-0 h-px transition-opacity duration-500 opacity-50 group-hover:opacity-100"
+                style={{ background: `linear-gradient(90deg, transparent 0%, ${svc.accent}90 50%, transparent 100%)` }}
               />
 
-              {/* Content */}
-              <div className="relative z-10 p-8 flex flex-col h-full">
-                {/* Icon container */}
-                <div className="mb-7 relative">
+              {/* Inner content */}
+              <div className="relative z-10 flex flex-col h-full p-8 gap-5">
+
+                {/* Top row: icon + number */}
+                <div className="flex items-start justify-between">
+                  {/* Icon box */}
                   <div
-                    className="absolute inset-0 scale-[2.5] rounded-full"
-                    style={{ background: `radial-gradient(circle, ${svc.accent}20, transparent 70%)` }}
-                  />
-                  <div
-                    className="relative w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                    className="w-12 h-12 rounded-[14px] flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
                     style={{
-                      background: `${svc.accent}12`,
-                      border: `1px solid ${svc.accent}25`,
+                      background: svc.iconBg,
+                      border: `1px solid ${svc.iconBorder}`,
                     }}
                   >
                     {svc.icon}
                   </div>
+                  {/* Step number */}
+                  <span
+                    className="text-[11px] font-mono font-bold tracking-widest"
+                    style={{ color: `${svc.accent}60` }}
+                  >
+                    {svc.num}
+                  </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-3 leading-snug">
+                {/* Title */}
+                <h3 className="text-[22px] font-extrabold text-white leading-snug tracking-tight group-hover:translate-x-0.5 transition-transform duration-300">
                   {svc.title}
                 </h3>
-                <p className="text-sm text-white/55 leading-relaxed flex-grow mb-8">
+
+                {/* Description */}
+                <p className="text-[14px] text-white/50 leading-[1.75] flex-grow">
                   {svc.desc}
                 </p>
 
                 {/* Footer row */}
-                <div className="flex items-center justify-between mt-auto">
+                <div className="flex items-center justify-between pt-2 border-t border-white/[0.06]">
                   <span
-                    className="text-[11px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
+                    className="text-[11px] font-mono font-bold uppercase tracking-widest px-3 py-1.5 rounded-full"
                     style={{
                       background: svc.tagBg,
                       border: `1px solid ${svc.tagBorder}`,
@@ -173,10 +182,13 @@ export default function Services() {
                     {svc.tag}
                   </span>
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0"
-                    style={{ background: `${svc.accent}20`, color: svc.accent }}
+                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                    style={{
+                      background: `${svc.accent}15`,
+                      color: svc.accent,
+                    }}
                   >
-                    <ArrowRight size={14} />
+                    <ArrowUpRight size={14} strokeWidth={2.5} />
                   </div>
                 </div>
               </div>

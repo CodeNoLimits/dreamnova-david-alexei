@@ -20,7 +20,8 @@ export default function Pricing() {
   const pkg3Features = [t("pkg3_f1"), t("pkg3_f2"), t("pkg3_f3"), t("pkg3_f4"), t("pkg3_f5"), t("pkg3_f6")];
 
   return (
-    <section id="pricing" className="max-w-7xl mx-auto">
+    <section id="pricing" className="py-28 px-6">
+      <div className="max-w-6xl mx-auto">
       <SectionHeader label={t("label")} title={t("title")} subtitle={t("subtitle")} />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
@@ -121,6 +122,7 @@ export default function Pricing() {
             {t("btn_outline")}
           </button>
         </GlassCard>
+      </div>
       </div>
     </section>
   );
