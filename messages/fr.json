@@ -95,7 +95,8 @@
     "s3_title": "Mise en ligne",
     "s3_desc": "Lancement, paiements, clients dès le premier jour.",
     "s4_title": "Grandir ensemble",
-    "s4_desc": "Support mensuel, contenu et optimisation."
+    "s4_desc": "Support mensuel, contenu et optimisation.",
+    "cta_start": "Commencer maintenant"
   },
   "cta": {
     "title": "Prêt à commencer ?",
