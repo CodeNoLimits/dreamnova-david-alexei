@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="relative z-10 py-8 text-center"
+      className="relative z-10 py-10 text-center"
       style={{ borderTop: "1px solid var(--glass-border)" }}
     >
       <p className="text-sm" style={{ color: "var(--text-muted)" }}>
@@ -19,6 +19,9 @@ export default function Footer() {
         >
           {t("tagline")}
         </a>
+      </p>
+      <p className="text-xs font-mono mt-3" style={{ color: "rgba(238,238,245,0.18)" }}>
+        נ נח נחמ נחמן מאומן — אין יאוש בעולם כלל
       </p>
     </footer>
   );

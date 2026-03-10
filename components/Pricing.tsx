@@ -57,19 +57,36 @@ export default function Pricing() {
         </GlassCard>
 
         {/* BUSINESS — Featured */}
-        <GlassCard featured className="p-8 relative">
+        <div
+          className="relative rounded-[24px] p-8"
+          style={{
+            background: "linear-gradient(135deg, rgba(139,127,255,0.14), rgba(100,223,223,0.07))",
+            border: "1px solid rgba(139,127,255,0.45)",
+            boxShadow: "0 0 60px rgba(139,127,255,0.18), 0 30px 80px rgba(0,0,0,0.5)",
+            transform: "scale(1.05)",
+          }}
+        >
+          {/* Popular badge */}
           <div
-            className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold text-white"
-            style={{ background: "var(--accent-lavender)" }}
+            className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-xs font-black text-white whitespace-nowrap"
+            style={{
+              background: "linear-gradient(135deg, #8B7FFF, #6A5FFF)",
+              boxShadow: "0 4px 20px rgba(139,127,255,0.5)",
+              letterSpacing: "0.1em",
+              fontFamily: "var(--font-space-mono)",
+            }}
           >
-            {t("popular")}
+            ✦ {t("popular")} ✦
           </div>
           <div className="mb-6">
             <h3 className="text-xl font-bold mb-1" style={{ color: "var(--text-primary)" }}>
               {t("pkg2_name")}
             </h3>
             <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>{t("pkg2_sub")}</p>
-            <div className="text-4xl font-bold" style={{ fontFamily: "var(--font-space-mono)", color: "var(--accent-lavender)" }}>
+            <div
+              className="text-5xl font-black gradient-text-hero"
+              style={{ fontFamily: "var(--font-space-mono)" }}
+            >
               {t("pkg2_price")}
             </div>
           </div>
@@ -82,15 +99,16 @@ export default function Pricing() {
           </ul>
           <button
             onClick={() => openWhatsApp("business")}
-            className="w-full py-3 rounded-[var(--radius-button)] font-semibold text-sm text-white transition-all duration-300"
+            className="w-full py-3.5 rounded-[var(--radius-button)] font-black text-sm text-white transition-all duration-300 hover:scale-105 active:scale-95"
             style={{
-              background: "linear-gradient(135deg, var(--accent-lavender), #6A5FFF)",
-              boxShadow: "0 4px 20px rgba(139,127,255,0.4)",
+              background: "linear-gradient(135deg, #8B7FFF, #6A5FFF)",
+              boxShadow: "0 8px 32px rgba(139,127,255,0.5)",
+              letterSpacing: "0.05em",
             }}
           >
             {t("btn_primary")}
           </button>
-        </GlassCard>
+        </div>
 
         {/* PREMIUM */}
         <GlassCard className="p-8">

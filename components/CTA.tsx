@@ -66,7 +66,7 @@ export default function CTA() {
             </div>
 
             <h2
-              className="font-black text-white leading-[1.1] tracking-tight mb-5"
+              className="font-black gradient-text-hero leading-[1.1] tracking-tight mb-5"
               style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
             >
               {t("title")}

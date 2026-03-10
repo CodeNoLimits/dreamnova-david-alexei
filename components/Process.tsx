@@ -145,10 +145,19 @@ export default function Process() {
                     style={{ background: `linear-gradient(90deg, transparent, ${step.accent}80, transparent)` }}
                   />
 
-                  {/* Step number — faded bg */}
+                  {/* Step number — giant faded bg */}
                   <span
-                    className="absolute -bottom-4 -right-2 text-8xl font-black pointer-events-none select-none"
-                    style={{ color: `${step.accent}08`, fontFamily: "var(--font-space-mono)" }}
+                    className="absolute pointer-events-none select-none"
+                    style={{
+                      top: "-20px",
+                      right: "0",
+                      fontSize: "140px",
+                      fontWeight: 900,
+                      opacity: 0.05,
+                      color: "var(--accent-lavender)",
+                      lineHeight: 1,
+                      fontFamily: "var(--font-space-mono)",
+                    }}
                   >
                     {step.num}
                   </span>

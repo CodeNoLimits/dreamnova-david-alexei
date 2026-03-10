@@ -64,19 +64,27 @@ export default function Navbar() {
         {/* Logo */}
         <button
           onClick={() => scrollTo("hero")}
-          className="flex items-center gap-1 shrink-0 group"
+          className="flex flex-col shrink-0 group text-start"
         >
+          <div className="flex items-center gap-1">
+            <span
+              className="dreamnova-logo-text text-lg font-black tracking-tight leading-none group-hover:brightness-125 transition-all"
+              style={{ fontFamily: "var(--font-space-mono)", color: "#8B7FFF" }}
+            >
+              DREAMNOVA
+            </span>
+            <span
+              className="dreamnova-logo-suffix text-lg font-light leading-none group-hover:text-white/60 transition-all"
+              style={{ fontFamily: "var(--font-space-mono)", color: "rgba(238,238,245,0.45)" }}
+            >
+              .consult
+            </span>
+          </div>
           <span
-            className="dreamnova-logo-text text-lg font-black tracking-tight leading-none group-hover:brightness-125 transition-all"
-            style={{ fontFamily: "var(--font-space-mono)", color: "#8B7FFF" }}
+            className="text-[9px] font-mono tracking-[0.3em] uppercase leading-none mt-0.5"
+            style={{ color: "rgba(238,238,245,0.3)" }}
           >
-            DREAMNOVA
-          </span>
-          <span
-            className="dreamnova-logo-suffix text-lg font-light leading-none group-hover:text-white/60 transition-all"
-            style={{ fontFamily: "var(--font-space-mono)", color: "rgba(238,238,245,0.45)" }}
-          >
-            .consult
+            {locale === "he" ? "בינה מלאכותית · ירושלים" : locale === "fr" ? "IA · Jérusalem" : "AI · Jerusalem"}
           </span>
         </button>
 
