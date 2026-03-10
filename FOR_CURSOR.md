@@ -87,9 +87,17 @@
 - Hover : border glow colorée + top shimmer line + arrow opacity 0→1
 
 ### Portfolio
-- 4 projets clients (images Google CDN — NE PAS CHANGER les URLs)
+- **URLs RÉELLES DES PROJETS — METTRE À JOUR dans les cards:**
+  1. **Barukh Sagit** → `https://barukh-sagit-jewelry.vercel.app` — bijouterie artisanale Jérusalem
+  2. **HaEsh Sheli** → `https://haesh-sheli-new.vercel.app` — LE PLUS BEAU — le mettre en 1ère position / featured
+  3. **Esther Ifrah** → `https://ultime-esther-ifra-breslev.vercel.app` — mode féminine Breslev
+  4. **Moulin d'Ore** → `https://moulindore.co.il` — NOUVEAU client à ajouter (5ème card ou remplacer une existante)
+- Images Google CDN sur les cards existantes — NE PAS CHANGER les `src` des images
 - Section vidéo FLOW ci-dessous (4 vidéos Veo 3.1)
-- Hover : scale-105 image + titre change couleur
+- Hover : scale-105 image + titre change couleur + lien "Voir →" lavender visible
+- ⚠️ DESIGN UPGRADE: Cards trop ternes actuellement. Chaque card doit avoir:
+  - `box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08)`
+  - Au hover: `box-shadow: 0 20px 50px rgba(0,0,0,0.5)` + border accent coloré
 
 ### Pricing
 - 3 tiers : Starter / Business (featured) / Premium
