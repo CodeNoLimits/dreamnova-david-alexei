@@ -718,6 +718,128 @@
     </div>
   </section>
 
+  <hr />
+
+  <!-- ── AI TOOLS GUIDE ── -->
+  <section>
+    <div class="section-label">Today's Workflow — Learn This</div>
+    <h2>Every Tool We Used Today</h2>
+
+    <!-- WORKFLOW OVERVIEW -->
+    <div class="card" style="margin-bottom:28px;background:linear-gradient(135deg,rgba(139,127,255,0.08),rgba(100,223,223,0.04));border-color:rgba(139,127,255,0.25);">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--teal);margin-bottom:12px;">The DreamNova Production Pipeline</div>
+      <div style="font-size:15px;color:var(--muted);line-height:1.8;">
+        <strong style="color:var(--text);">Claude Web (claude.ai)</strong> = The BRAIN — writes master plans, market research, content, strategies.<br>
+        <strong style="color:var(--text);">Claude Code (this terminal AI)</strong> = The HANDS — executes code, deploys, manages files, controls browsers.<br>
+        <strong style="color:var(--text);">Cursor AI</strong> = The ORCHESTRA — polishes UI components with AI-assisted editing.<br>
+        <strong style="color:var(--text);">Google Flow / Veo 3.1</strong> = The CINEMA — generates 8-32 second AI cinematic videos.<br>
+        <strong style="color:var(--text);">Vercel + GitHub</strong> = The STAGE — where everything goes live.
+      </div>
+    </div>
+
+    <!-- TOOLS GRID -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🤖</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Claude Code (Terminal)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Run in Terminal: <code style="color:var(--teal);font-family:'Space Mono',monospace;">claude</code><br>Reads files, writes code, runs commands, takes screenshots, controls browsers autonomously.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">claude.ai/code</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">💬</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Claude Web (claude.ai)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Open claude.ai → New chat. Use for planning, writing content, market research, master documents. David writes the vision here, Claude Code executes.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">claude.ai</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🎨</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Cursor AI</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Open project folder in Cursor. Read FOR_CURSOR.md → copy the full content → paste as new chat. AI reads the spec and builds components automatically.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">cursor.sh</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🎬</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Google Flow + Veo 3.1</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;"><strong style="color:var(--text);">Step 1:</strong> Go to labs.google/fx → Flow<br><strong style="color:var(--text);">Step 2:</strong> Click settings ⚙️ → Tab "Vidéo" → select "Veo 3.1 - Fast" → x1 count → Escape<br><strong style="color:var(--text);">Step 3:</strong> Type prompt → Créer → 8-second cinematic clip<br><strong style="color:var(--text);">Step 4:</strong> Open clip → "Prolonger" → continuation prompt → repeat x3 = 32 seconds</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">labs.google/fx/tools/flow</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🖼️</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Google Stitch</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Go to labs.google/fx → Stitch. Generate reference UI screenshots for your designs. Use "Nano Banana 2" model for images. Export as PNG → put in <code style="color:var(--teal);font-size:11px;">public/stitch-refs/</code></div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">labs.google/fx/tools/stitch</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🌐</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Google Gemini</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">gemini.google.com — Use for: market research, deep web search, competitor analysis, Hebrew content. Also runs as background agent (OpenClaw/Gemini Junior) on David's machines.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">gemini.google.com</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🚀</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Vercel</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Deploy any Next.js/HTML project:<br><code style="color:var(--teal);font-size:11px;font-family:'Space Mono',monospace;">vercel --prod</code><br>Or auto-deploys when you push to GitHub. Dashboard: vercel.com. Every client site lives here.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">vercel.com</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🐙</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">GitHub</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Version control + triggers Vercel deploys.<br><code style="color:var(--teal);font-size:11px;font-family:'Space Mono',monospace;">git add . && git commit -m "feat: ..." && git push origin main</code><br>All repos: github.com/CodeNoLimits</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">github.com/CodeNoLimits</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">🎭</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Playwright (Autonomous Browser)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Claude Code's internal browser — invisible to David. Claude Code uses it to: take screenshots, navigate websites, fill forms, test UIs automatically. Never use it for things David needs to see — use <code style="color:var(--teal);font-size:11px;">open -a "Google Chrome Beta" URL</code> for that.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">Internal MCP tool in Claude Code</div>
+      </div>
+
+      <div class="card">
+        <div style="font-size:28px;margin-bottom:10px;">⚡</div>
+        <div style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px;">Claude Code Agents (Parallel)</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px;">Claude Code can run multiple AI sub-agents in parallel. Today we ran: one agent building Teva Shuk site, one reviewing dreamnova-site screenshots, one deploying to Vercel — all simultaneously. This is how we ship in 20 minutes what takes others 2 weeks.</div>
+        <div style="font-size:12px;font-family:'Space Mono',monospace;color:var(--lavender);">Built into Claude Code</div>
+      </div>
+
+    </div>
+
+    <!-- TODAY'S EXACT WORKFLOW -->
+    <div class="card" style="margin-top:24px;">
+      <div style="font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:16px;">Today's Exact Workflow (March 10, 2026)</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="background:rgba(139,127,255,0.2);color:var(--lavender);font-family:'Space Mono',monospace;font-size:11px;padding:3px 10px;border-radius:100px;flex-shrink:0;">1</span>
+          <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--text);">Claude Web (claude.ai)</strong> — David described the project: DreamNova Consult trilingual site, Space Crystals design. Claude Web wrote the full spec + CLAUDE.md + FOR_CURSOR.md master document.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="background:rgba(100,223,223,0.2);color:var(--teal);font-family:'Space Mono',monospace;font-size:11px;padding:3px 10px;border-radius:100px;flex-shrink:0;">2</span>
+          <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--text);">Google Stitch</strong> — Generated 4 reference UI screenshots showing the Space Crystals design: Hero, Services, Pricing, CTA sections. Exported as stitch-1 through stitch-4.png.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="background:rgba(255,217,61,0.2);color:var(--gold);font-family:'Space Mono',monospace;font-size:11px;padding:3px 10px;border-radius:100px;flex-shrink:0;">3</span>
+          <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--text);">Google Flow / Veo 3.1</strong> — Generated 8-second cinematic base clip (Mahane Yehuda market, golden hour). Extended x3 using "Prolonger" → 32-second cinematic narrative. Saved as hero-market-dolly.mp4 + hero-craftsman-reveal.mp4.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="background:rgba(255,138,128,0.2);color:var(--coral);font-family:'Space Mono',monospace;font-size:11px;padding:3px 10px;border-radius:100px;flex-shrink:0;">4</span>
+          <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--text);">Claude Code (Terminal)</strong> — Organized all files, copied videos + stitch refs into public/, created FOR_CURSOR.md with one-prompt Cursor instructions, resolved GitHub secret scanning issue, created fresh repo, deployed to Vercel.</div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="background:rgba(139,127,255,0.2);color:var(--lavender);font-family:'Space Mono',monospace;font-size:11px;padding:3px 10px;border-radius:100px;flex-shrink:0;">5</span>
+          <div style="font-size:14px;color:var(--muted);"><strong style="color:var(--text);">Result</strong> — GitHub repo CodeNoLimits/dreamnova-david-alexei + Vercel production URL + FOR_CURSOR.md ready for Cursor to finish the polish in one prompt. Total time: ~3 hours for a trilingual production site with AI videos.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-logo">DREAMNOVA</div>

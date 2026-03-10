@@ -18,7 +18,14 @@ const projects = [
     alt: "Kavkom Solar",
     accent: "#2DD4BF",
     tags: [{ label: "HTML5", color: "#2DD4BF" }, { label: "AI Lead Gen", color: "#2DD4BF" }],
-    url: "#",
+    url: "https://ariel-solar-panels-kavkom.vercel.app",
+  },
+  {
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAqsjREzZ948BDkFTvvt7I4OEXE3EkbheGEgrnfkgXD-lt-MdutTBuHcA-jsy-1I2ulV1qXT_5j-oWAf8oDQAPJlUwj66_yAXIwvUMI0DXfcGcnPH3UF5NjFJ8O34cwY4JTOX_voJEDaYDob4AMwSDUYEvhGYnCMnODWYzPglSB0IIefYYq7uWmQOfEwjr1Lkf1HhCj3CniYy4wni2m6CmIOy5Kho1VfcWxgF8wZDrMH9FFfE3MOoTqHGsaYiCNkuG82U1ad9rRykIE",
+    alt: "Moulin d'Ore — Marché Naturel",
+    accent: "#C9A84C",
+    tags: [{ label: "Next.js", color: "#C9A84C" }, { label: "E-Commerce", color: "#C9A84C" }, { label: "Organic", color: "#C9A84C" }],
+    url: "https://moulindore.co.il",
   },
   {
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDF-MOVTD5E16tqXTH_C9Y6WJaV3bE-qxyhZiQn2CdoDfOLw6XVxj6fRP03xeoYvQjCUj8OLI4l-fEZ7fcHv9QQj8wB9lLUnZjENK9XvuR5EsZRRrIoev1a2m-WC-rKZSRf5zM4lVynYp6BS3VCHDez9sOlTF5spzJy-Q9g2cBFSsW4KC8K2Uf_dlTfJd7b-Xx4PIVucCW7xOy0t5jLH-C3t0cV-O1mikxOV3j23c0NWUu6vF17eOdYIF7N8_IpxImgowU-Nm3aLLq8",

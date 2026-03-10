@@ -1,6 +1,82 @@
-# FOR_CURSOR.md — DreamNova Consult v2
-# Instructions précises pour Cursor AI — Lecture unique → résultat parfait
+# FOR_CURSOR.md — DreamNova Consult v3 — WORLD CLASS UPGRADE
 # ============================================================================
+# OBJECTIF: Ce site doit être WORLD CLASS. Chaque section = jaw-dropping.
+# David montre ce site à des clients demain matin. Zéro compromis.
+# ============================================================================
+
+## ⚡ URGENT — MODIFICATIONS PRIORITAIRES (faire dans cet ordre)
+
+### 1. NAVBAR — Logo + Tagline multilingue (FR/EN/HE)
+Le logo actuel "DREAMNOVA.consult" est trop simple. Remplacer par:
+```tsx
+// Logo avec tagline trilingue animé
+<div className="flex flex-col">
+  <span className="font-mono font-black text-xl tracking-widest" style={{ color: "#8B7FFF" }}>
+    DREAMNOVA
+    <span style={{ color: "rgba(238,238,245,0.4)" }}>.consult</span>
+  </span>
+  <span className="text-[10px] font-mono tracking-[0.3em] uppercase" style={{ color: "rgba(238,238,245,0.35)" }}>
+    {locale === "he" ? "בינה מלאכותית · ירושלים" : locale === "fr" ? "IA · Jérusalem" : "AI · Jerusalem"}
+  </span>
+</div>
+```
+
+### 2. TOUS LES BOUTONS WhatsApp → wa.me fonctionnel
+Remplacer `972524000000` par le vrai numéro de David.
+Chaque bouton CTA, Pricing, Contact doit ouvrir WhatsApp avec ce pattern:
+```ts
+const WA = "972524000000"; // ← David remplace par son vrai numéro
+window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank");
+```
+
+### 3. SERVICES — Élever drastiquement le visuel
+Les cards sont TROP plates et sombres. Fix obligatoire:
+- Chaque card: gradient bg unique (card 1 = lavender, card 2 = teal, card 3 = coral)
+- Icon avec glow: `filter: drop-shadow(0 0 16px rgba(accent, 0.7))`
+- Hover: border color accent + translateY(-4px) + box-shadow glow
+- Number badge top-right: faded `opacity: 0.15`, font-size 80px
+
+### 4. PORTFOLIO — Ajouter moulindore.co.il (déjà fait dans Portfolio.tsx ✅)
+Vérifier que les 5 cards s'affichent correctement en grille.
+
+### 5. PRICING — Featured card doit BRILLER
+```css
+/* Business card featured */
+background: linear-gradient(135deg, rgba(139,127,255,0.14), rgba(100,223,223,0.07));
+border: 1px solid rgba(139,127,255,0.45);
+box-shadow: 0 0 60px rgba(139,127,255,0.18), 0 30px 80px rgba(0,0,0,0.5);
+transform: scale(1.05);
+```
+Prix featured: `text-5xl font-black gradient-text-hero`
+
+### 6. PROCESS — Numéros géants faded
+```tsx
+// Numéro faded en arrière-plan de chaque step
+<span style={{
+  position: "absolute", top: "-20px", right: "0",
+  fontSize: "140px", fontWeight: 900, opacity: 0.05,
+  color: "var(--accent-lavender)", lineHeight: 1,
+  pointerEvents: "none", userSelect: "none"
+}}>
+  0{index + 1}
+</span>
+```
+
+### 7. CTA SECTION — Climax visuel
+- Background: orbe lavender `radial-gradient(ellipse at 50% 50%, rgba(139,127,255,0.15), transparent 60%)`
+- Box: `box-shadow: 0 0 100px rgba(139,127,255,0.12)`
+- H2: `gradient-text-hero` class
+- Bouton principal: glow lavender `box-shadow: 0 8px 32px rgba(139,127,255,0.5)`
+
+### 8. FOOTER — Tagline Na Nach
+Ajouter sous le copyright:
+```tsx
+<p className="text-xs font-mono mt-2" style={{ color: "rgba(238,238,245,0.2)" }}>
+  נ נח נחמ נחמן מאומן — אין יאוש בעולם כלל
+</p>
+```
+
+---
 
 ## ARCHITECTURE ACTUELLE (Mars 2026)
 
