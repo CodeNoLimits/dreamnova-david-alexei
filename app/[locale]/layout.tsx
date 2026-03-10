@@ -65,6 +65,9 @@ export default async function LocaleLayout({
             locale === "he"
               ? "var(--font-heebo), var(--font-space-grotesk), sans-serif"
               : "var(--font-space-grotesk), var(--font-outfit), sans-serif",
+          fontFeatureSettings: "'kern' 1, 'liga' 1",
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
         }}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>

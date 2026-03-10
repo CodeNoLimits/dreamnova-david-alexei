@@ -284,3 +284,31 @@ section {
   opacity: 0.3;
   transform: translateY(-50%);
 }
+
+/* ── Hebrew RTL fixes ── */
+[dir="rtl"] .font-mono,
+[dir="rtl"] [style*="font-space-mono"] {
+  font-family: var(--font-heebo), sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+/* Force logo to be bright in RTL/Hebrew */
+[dir="rtl"] .dreamnova-logo-text {
+  color: #8B7FFF !important;
+}
+
+[dir="rtl"] .dreamnova-logo-suffix {
+  color: rgba(238,238,245,0.55) !important;
+}
+
+/* Better Hebrew heading weight */
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] h3 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ── Language switcher pill ── */
+.lang-pill-active {
+  background: linear-gradient(135deg, #8B7FFF, #6A5FFF) !important;
+  box-shadow: 0 2px 12px rgba(139,127,255,0.4) !important;
+}
