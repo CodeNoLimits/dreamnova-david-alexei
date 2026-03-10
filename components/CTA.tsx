@@ -8,7 +8,7 @@ export default function CTA() {
   const t = useTranslations("cta");
   const locale = useLocale();
 
-  const WHATSAPP = "972524000000";
+  const WHATSAPP = "972544636377"; // Alexei
 
   const waMsg = locale === "he"
     ? "שלום DreamNova, אני רוצה לדבר על הפרויקט שלי"

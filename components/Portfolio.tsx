@@ -7,39 +7,52 @@ import { ExternalLink, Play } from "lucide-react";
 
 const projects = [
   {
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAqsjREzZ948BDkFTvvt7I4OEXE3EkbheGEgrnfkgXD-lt-MdutTBuHcA-jsy-1I2ulV1qXT_5j-oWAf8oDQAPJlUwj66_yAXIwvUMI0DXfcGcnPH3UF5NjFJ8O34cwY4JTOX_voJEDaYDob4AMwSDUYEvhGYnCMnODWYzPglSB0IIefYYq7uWmQOfEwjr1Lkf1HhCj3CniYy4wni2m6CmIOy5Kho1VfcWxgF8wZDrMH9FFfE3MOoTqHGsaYiCNkuG82U1ad9rRykIE",
-    alt: "Barukh Sagit luxury jewelry",
-    accent: "#FBBF24",
-    tags: [{ label: "Next.js", color: "#FBBF24" }, { label: "Supabase", color: "#FBBF24" }, { label: "E-Commerce", color: "#FBBF24" }],
-    url: "https://barukh-sagit-jewelry.vercel.app",
+    // HaEsh Sheli — FEATURED (most impressive — Keren Rabbi Yisrael)
+    img: "/images/portfolio-haesh.jpg",
+    fallbackImg: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrlY0If1Lx05pZhCBEz96btDHfsvmmvfkR7-yymYd7fVkC3JnuMJBbYIhqpqSBH0T-JtPoDGRt69w5qck2j6qpo-SJpF5t6XpSTV6g3CqCTXPLYtdeyUR6Fh1wpsDgUtvwntk1KRcMzGS9G2jdXTmghskQ3PNd2tyuye4MHV7vTdG_gl2WSs3nUcXZ3jwZTHd8LXV3vTTxeRzFgW9T-vTPctxRMnjKXqMo_6aV6SZzSVruGFjyn3hiFuWuV79J3AL0UiG7-1Hgj9gw",
+    alt: "HaEsh Sheli — Keren Rabbi Yisrael",
+    accent: "#8B7FFF",
+    tags: [{ label: "React 18", color: "#8B7FFF" }, { label: "Vite", color: "#8B7FFF" }, { label: "Stripe + PayPal", color: "#8B7FFF" }, { label: "6 langues", color: "#8B7FFF" }],
+    url: "https://haesh-sheli-new.vercel.app",
+    featured: true,
   },
   {
+    // Esther Ifrah — mode féminine Breslev
+    img: "/images/portfolio-esther.jpg",
+    fallbackImg: "https://lh3.googleusercontent.com/aida-public/AB6AXuDF-MOVTD5E16tqXTH_C9Y6WJaV3bE-qxyhZiQn2CdoDfOLw6XVxj6fRP03xeoYvQjCUj8OLI4l-fEZ7fcHv9QQj8wB9lLUnZjENK9XvuR5EsZRRrIoev1a2m-WC-rKZSRf5zM4lVynYp6BS3VCHDez9sOlTF5spzJy-Q9g2cBFSsW4KC8K2Uf_dlTfJd7b-Xx4PIVucCW7xOy0t5jLH-C3t0cV-O1mikxOV3j23c0NWUu6vF17eOdYIF7N8_IpxImgowU-Nm3aLLq8",
+    alt: "Esther Ifrah Breslev",
+    accent: "#FF8A80",
+    tags: [{ label: "Next.js", color: "#FF8A80" }, { label: "Mode Breslev", color: "#FF8A80" }, { label: "RTL", color: "#FF8A80" }],
+    url: "https://breslev-esther-ifrah.vercel.app",
+    featured: false,
+  },
+  {
+    // Moulin d'Ore — marché bio
+    img: "/images/portfolio-moulindore.jpg",
+    fallbackImg: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxPUNSth7GFbjhjZNLo3h3X6kBceeDU4K6QlfaxvKTFbiO8NbqfY7aD-WRxtCb9o1ZMtGAUl5wVTJLgTWS26vSYriB8SRuR5DfL5Fm2mCr4BsPvOWx4KkP0rS8Mv_CdoSjza1m18medPpOuWE68Z547b31Lzy4LpqlQXMAAIX6cpewQlQghqfkg9Ml0T9x24IE96x3M_YJZA2_KnA9q_EkO8_4VcCEe7UGRT10a1td45jgXWRrGekRqeDcyj_aA4i2saQHwK_wzD-d",
+    alt: "Moulin d'Ore — Marché Naturel",
+    accent: "#C9A84C",
+    tags: [{ label: "Next.js", color: "#C9A84C" }, { label: "E-Commerce", color: "#C9A84C" }, { label: "Organic", color: "#C9A84C" }],
+    url: "https://moulindore.co.il",
+    featured: false,
+  },
+  {
+    // Barukh Sagit — bijouterie Jérusalem
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAqsjREzZ948BDkFTvvt7I4OEXE3EkbheGEgrnfkgXD-lt-MdutTBuHcA-jsy-1I2ulV1qXT_5j-oWAf8oDQAPJlUwj66_yAXIwvUMI0DXfcGcnPH3UF5NjFJ8O34cwY4JTOX_voJEDaYDob4AMwSDUYEvhGYnCMnODWYzPglSB0IIefYYq7uWmQOfEwjr1Lkf1HhCj3CniYy4wni2m6CmIOy5Kho1VfcWxgF8wZDrMH9FFfE3MOoTqHGsaYiCNkuG82U1ad9rRykIE",
+    alt: "Barukh Sagit — Bijoux Jérusalem",
+    accent: "#FBBF24",
+    tags: [{ label: "Next.js", color: "#FBBF24" }, { label: "Supabase", color: "#FBBF24" }, { label: "Bijoux", color: "#FBBF24" }],
+    url: "https://barukh-sagit-jewelry.vercel.app",
+    featured: false,
+  },
+  {
+    // Kavkom Solar
     img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCxPUNSth7GFbjhjZNLo3h3X6kBceeDU4K6QlfaxvKTFbiO8NbqfY7aD-WRxtCb9o1ZMtGAUl5wVTJLgTWS26vSYriB8SRuR5DfL5Fm2mCr4BsPvOWx4KkP0rS8Mv_CdoSjza1m18medPpOuWE68Z547b31Lzy4LpqlQXMAAIX6cpewQlQghqfkg9Ml0T9x24IE96x3M_YJZA2_KnA9q_EkO8_4VcCEe7UGRT10a1td45jgXWRrGekRqeDcyj_aA4i2saQHwK_wzD-d",
     alt: "Kavkom Solar",
     accent: "#2DD4BF",
     tags: [{ label: "HTML5", color: "#2DD4BF" }, { label: "AI Lead Gen", color: "#2DD4BF" }],
     url: "https://ariel-solar-panels-kavkom.vercel.app",
-  },
-  {
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAqsjREzZ948BDkFTvvt7I4OEXE3EkbheGEgrnfkgXD-lt-MdutTBuHcA-jsy-1I2ulV1qXT_5j-oWAf8oDQAPJlUwj66_yAXIwvUMI0DXfcGcnPH3UF5NjFJ8O34cwY4JTOX_voJEDaYDob4AMwSDUYEvhGYnCMnODWYzPglSB0IIefYYq7uWmQOfEwjr1Lkf1HhCj3CniYy4wni2m6CmIOy5Kho1VfcWxgF8wZDrMH9FFfE3MOoTqHGsaYiCNkuG82U1ad9rRykIE",
-    alt: "Moulin d'Ore — Marché Naturel",
-    accent: "#C9A84C",
-    tags: [{ label: "Next.js", color: "#C9A84C" }, { label: "E-Commerce", color: "#C9A84C" }, { label: "Organic", color: "#C9A84C" }],
-    url: "https://moulindore.co.il",
-  },
-  {
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDF-MOVTD5E16tqXTH_C9Y6WJaV3bE-qxyhZiQn2CdoDfOLw6XVxj6fRP03xeoYvQjCUj8OLI4l-fEZ7fcHv9QQj8wB9lLUnZjENK9XvuR5EsZRRrIoev1a2m-WC-rKZSRf5zM4lVynYp6BS3VCHDez9sOlTF5spzJy-Q9g2cBFSsW4KC8K2Uf_dlTfJd7b-Xx4PIVucCW7xOy0t5jLH-C3t0cV-O1mikxOV3j23c0NWUu6vF17eOdYIF7N8_IpxImgowU-Nm3aLLq8",
-    alt: "Esther Ifrah Breslov",
-    accent: "#FF8A80",
-    tags: [{ label: "Shopify", color: "#FF8A80" }, { label: "Next.js", color: "#FF8A80" }, { label: "Community", color: "#FF8A80" }],
-    url: "https://ultime-esther-ifra-breslev.vercel.app",
-  },
-  {
-    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrlY0If1Lx05pZhCBEz96btDHfsvmmvfkR7-yymYd7fVkC3JnuMJBbYIhqpqSBH0T-JtPoDGRt69w5qck2j6qpo-SJpF5t6XpSTV6g3CqCTXPLYtdeyUR6Fh1wpsDgUtvwntk1KRcMzGS9G2jdXTmghskQ3PNd2tyuye4MHV7vTdG_gl2WSs3nUcXZ3jwZTHd8LXV3vTTxeRzFgW9T-vTPctxRMnjKXqMo_6aV6SZzSVruGFjyn3hiFuWuV79J3AL0UiG7-1Hgj9gw",
-    alt: "HaEsh Sheli",
-    accent: "#8B7FFF",
-    tags: [{ label: "React", color: "#8B7FFF" }, { label: "E-Commerce", color: "#8B7FFF" }, { label: "Breslev", color: "#8B7FFF" }],
-    url: "https://haesh-sheli-new.vercel.app",
+    featured: false,
   },
 ];
 
@@ -87,6 +100,7 @@ export default function Portfolio() {
     { title: t("p2_title"), desc: t("p2_desc"), ...projects[1] },
     { title: t("p3_title"), desc: t("p3_desc"), ...projects[2] },
     { title: t("p4_title"), desc: t("p4_desc"), ...projects[3] },
+    { title: t("p5_title"), desc: t("p5_desc"), ...projects[4] },
   ];
 
   return (
@@ -100,7 +114,7 @@ export default function Portfolio() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
           <div className="inline-block px-4 py-1.5 rounded-full mb-4 text-xs font-mono uppercase tracking-[0.2em] text-[var(--accent-lavender)] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20">
             {t("label")}

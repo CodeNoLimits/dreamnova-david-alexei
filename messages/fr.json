@@ -1,5 +1,7 @@
 {
   "nav": {
+    "home": "Accueil",
+    "home": "Accueil",
     "services": "Services",
     "portfolio": "Portfolio",
     "pricing": "Tarifs",
@@ -39,14 +41,16 @@
     "label": "Portfolio",
     "title": "Projets réels, résultats réels",
     "subtitle": "Chaque projet construit avec les meilleures technologies et un design qui vend.",
-    "p1_title": "Barukh Sagit Bijoux",
-    "p1_desc": "Boutique de bijoux de luxe avec catalogue, vidéo et page de vente.",
-    "p2_title": "Kavkom Solar",
-    "p2_desc": "Génération de leads AI pour entreprise solaire — intégration Google Solar API.",
-    "p3_title": "Esther Ifrah",
-    "p3_desc": "Boutique livres Breslev avec communauté et système de paiement complet.",
-    "p4_title": "HaEsh Sheli",
-    "p4_desc": "Boutique livres Breslev, 43 livres, 6 langues, paiements Stripe + PayPal."
+    "p1_title": "HaEsh Sheli",
+    "p1_desc": "Boutique Breslev complète — 43 livres, 6 langues, paiements Stripe + PayPal.",
+    "p2_title": "Esther Ifrah",
+    "p2_desc": "Mode et vêtements Breslev — boutique complète avec collections saisonnières.",
+    "p3_title": "Moulin d'Ore",
+    "p3_desc": "Marché naturel artisanal — boutique e-commerce bio avec paiements en ligne.",
+    "p4_title": "Barukh Sagit Bijoux",
+    "p4_desc": "Boutique de bijoux de luxe avec catalogue, vidéo et page de vente.",
+    "p5_title": "Kavkom Solar",
+    "p5_desc": "Génération de leads AI pour entreprise solaire — intégration Google Solar API."
   },
   "pricing": {
     "label": "Tarifs",

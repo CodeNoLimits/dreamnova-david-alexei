@@ -36,6 +36,7 @@ export default function Navbar() {
   };
 
   const navLinks = [
+    { label: locale === "he" ? "בית" : locale === "fr" ? "Accueil" : "Home", id: "hero", href: `/${locale}#hero` },
     { label: t("services"), id: "services", href: `/${locale}/services` },
     { label: t("portfolio"), id: "portfolio", href: `/${locale}/portfolio` },
     { label: t("pricing"), id: "pricing", href: `/${locale}/pricing` },
@@ -96,14 +97,17 @@ export default function Navbar() {
               href={link.href}
               className="text-sm font-medium transition-colors duration-200 relative group"
               style={{
-                color: pathname.includes(`/${link.id}`) ? "#EEEEF5" : "rgba(238,238,245,0.55)",
+                color: (link.id === "hero" ? (pathname === `/${locale}` || pathname === `/${locale}/`) : pathname.includes(link.id)) ? "#EEEEF5" : "rgba(238,238,245,0.55)",
                 textDecoration: "none",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#EEEEF5")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = pathname.includes(`/${link.id}`) ? "#EEEEF5" : "rgba(238,238,245,0.55)")}
+              onMouseLeave={(e) => {
+                const active = link.id === "hero" ? (pathname === `/${locale}` || pathname === `/${locale}/`) : pathname.includes(link.id);
+                e.currentTarget.style.color = active ? "#EEEEF5" : "rgba(238,238,245,0.55)";
+              }}
             >
               {link.label}
-              {pathname.includes(`/${link.id}`) && (
+              {((link.id === "hero" && (pathname === `/${locale}` || pathname === `/${locale}/`)) || (link.id !== "hero" && pathname.includes(link.id))) && (
                 <span
                   className="absolute -bottom-1 left-0 right-0 h-px"
                   style={{ background: "linear-gradient(90deg, transparent, #8B7FFF, transparent)" }}
