@@ -137,12 +137,16 @@ style={{
 - Tags en bas: pill monospace avec border colored (voir code ci-dessus)
 
 #### Portfolio (`components/Portfolio.tsx`)
-- 4 cards existantes: images réelles (lh3.googleusercontent.com URLs — NE PAS CHANGER)
+- **METTRE À JOUR avec les vraies URLs des projets clients:**
+  1. **Barukh Sagit** → `https://barukh-sagit-jewelry.vercel.app` — bijouterie artisanale
+  2. **HaEsh Sheli** → `https://haesh-sheli-new.vercel.app` — LE PLUS BEAU — le mettre en featured/premier
+  3. **Esther Ifrah** → `https://ultime-esther-ifra-breslev.vercel.app` — mode feminine Breslev
+  4. **Moulin d'Ore** → `https://moulindore.co.il` — nouveau client à ajouter
 - Chaque card: `overflow: hidden`, `border-radius: 20px`, border glass
 - Image wrapper: `aspect-ratio: 16/10`, overflow hidden
 - Hover: `group-hover:scale-105` sur l'image (PAS 110 — trop agressif) + accent color sur le titre
 - Overlay gradient sur l'image au hover: `linear-gradient(to top, rgba(6,6,12,0.8), transparent)`
-- Info section sous l'image: titre bold + tech tags pills colorés
+- Info section sous l'image: titre bold + tech tags pills colorés + lien "Voir →" en lavender
 - `prismatic-hover` class sur chaque card (déjà en globals.css)
 
 #### Pricing (`components/Pricing.tsx`) — ⚠️ CARTE FEATURED DOIT BRILLER

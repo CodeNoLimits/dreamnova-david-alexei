@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexei — DreamNova Mission · March 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #06060C;
+      --bg2: #0D0D18;
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --lavender: #8B7FFF;
+      --teal: #64DFDF;
+      --coral: #FF8A80;
+      --gold: #FFD93D;
+      --text: #EEEEF5;
+      --muted: rgba(238,238,245,0.5);
+      --dim: rgba(238,238,245,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Stars ── */
+    .stars {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(1px 1px at 10% 15%, rgba(139,127,255,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 40%, rgba(100,223,223,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 10%, white 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 60%, rgba(139,127,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 30%, rgba(100,223,223,0.6) 0%, transparent 100%),
+        radial-gradient(1px 1px at 15% 75%, white 0%, transparent 100%),
+        radial-gradient(1px 1px at 35% 85%, rgba(139,127,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 60% 90%, rgba(100,223,223,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 80%, white 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 55%, rgba(255,217,61,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 45%, white 0%, transparent 100%),
+        radial-gradient(1px 1px at 5% 50%, rgba(100,223,223,0.5) 0%, transparent 100%),
+        radial-gradient(2px 2px at 30% 20%, rgba(139,127,255,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 65% 25%, rgba(100,223,223,0.3) 0%, transparent 100%),
+        radial-gradient(2px 2px at 92% 65%, rgba(255,138,128,0.4) 0%, transparent 100%);
+    }
+
+    /* ── Nebula orbs ── */
+    .orb {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+      filter: blur(80px); opacity: 0.12;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--lavender); top: -200px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--teal); bottom: 100px; right: -100px; }
+    .orb-3 { width: 300px; height: 300px; background: var(--coral); top: 50%; left: 40%; }
+
+    /* ── Layout ── */
+    .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ── */
+    header {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(139,127,255,0.3);
+      background: rgba(139,127,255,0.08);
+      border-radius: 100px; padding: 6px 16px;
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--lavender); margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700; line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .gradient-name {
+      background: linear-gradient(135deg, #8B7FFF 0%, #64DFDF 50%, #FFD93D 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 18px; color: var(--muted); max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    /* ── Team pill row ── */
+    .team-row {
+      display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .team-pill {
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass); border-radius: 100px;
+      padding: 8px 18px; font-size: 13px;
+    }
+    .team-pill .role { color: var(--muted); font-size: 11px; }
+    .you-pill { border-color: rgba(139,127,255,0.4); background: rgba(139,127,255,0.08); }
+    .you-pill .name { color: var(--lavender); font-weight: 600; }
+
+    /* ── Section ── */
+    section { margin-bottom: 64px; }
+    .section-label {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 3px;
+      color: var(--teal); margin-bottom: 12px;
+    }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; }
+
+    /* ── Glass card ── */
+    .card {
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      border-radius: 20px; padding: 28px;
+      backdrop-filter: blur(12px);
+      transition: border-color 0.3s;
+    }
+    .card:hover { border-color: rgba(139,127,255,0.25); }
+
+    /* ── Role card ── */
+    .role-card {
+      border: 1px solid rgba(139,127,255,0.3);
+      background: linear-gradient(135deg, rgba(139,127,255,0.08), rgba(100,223,223,0.04));
+      border-radius: 24px; padding: 36px;
+      margin-bottom: 40px;
+    }
+    .role-title {
+      font-size: 13px; font-family: 'Space Mono', monospace;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--lavender); margin-bottom: 16px;
+    }
+    .role-card h3 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+    .role-card p { color: var(--muted); font-size: 16px; max-width: 520px; }
+    .rule-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 0; border-bottom: 1px solid var(--glass-border);
+      font-size: 15px;
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-icon { font-size: 18px; width: 28px; text-align: center; }
+    .rule-row strong { color: var(--text); }
+    .rule-row span { color: var(--muted); font-size: 13px; }
+
+    /* ── Week grid ── */
+    .weeks { display: flex; flex-direction: column; gap: 20px; }
+    .week-card { border-radius: 20px; overflow: hidden; }
+    .week-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+    .week-num {
+      font-family: 'Space Mono', monospace; font-size: 11px;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .week-title { font-size: 18px; font-weight: 600; }
+    .week-tag {
+      margin-left: auto; border-radius: 100px; padding: 4px 12px;
+      font-size: 11px; font-family: 'Space Mono', monospace;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .week-body { padding: 20px 24px; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .task-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--muted);
+    }
+    .task-list li::before {
+      content: '→'; color: var(--teal); font-family: 'Space Mono', monospace;
+      font-size: 12px; margin-top: 2px; flex-shrink: 0;
+    }
+    .task-list li strong { color: var(--text); display: block; font-size: 14px; }
+
+    .w1 { background: linear-gradient(135deg, rgba(139,127,255,0.06), rgba(100,223,223,0.03)); border: 1px solid rgba(139,127,255,0.2); }
+    .w1 .week-tag { background: rgba(139,127,255,0.15); color: var(--lavender); }
+    .w2 { background: linear-gradient(135deg, rgba(100,223,223,0.06), rgba(139,127,255,0.03)); border: 1px solid rgba(100,223,223,0.2); }
+    .w2 .week-tag { background: rgba(100,223,223,0.15); color: var(--teal); }
+    .w3 { background: linear-gradient(135deg, rgba(255,217,61,0.05), rgba(100,223,223,0.03)); border: 1px solid rgba(255,217,61,0.2); }
+    .w3 .week-tag { background: rgba(255,217,61,0.15); color: var(--gold); }
+    .w4 { background: linear-gradient(135deg, rgba(255,138,128,0.05), rgba(139,127,255,0.03)); border: 1px solid rgba(255,138,128,0.2); }
+    .w4 .week-tag { background: rgba(255,138,128,0.15); color: var(--coral); }
+
+    /* ── Stack ── */
+    .stack-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .stack-item {
+      border: 1px solid var(--glass-border);
+      background: var(--glass); border-radius: 14px;
+      padding: 16px; text-align: center;
+    }
+    .stack-item .icon { font-size: 24px; margin-bottom: 8px; display: block; }
+    .stack-item .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .stack-item .desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Clients ── */
+    .client-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .client-grid { grid-template-columns: 1fr; } }
+    .client-card {
+      border: 1px solid var(--glass-border); background: var(--glass);
+      border-radius: 16px; padding: 18px;
+    }
+    .client-name { font-weight: 600; font-size: 15px; }
+    .client-tag {
+      display: inline-block; border-radius: 100px; padding: 2px 10px;
+      font-size: 10px; font-family: 'Space Mono', monospace;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin: 6px 0;
+    }
+    .client-desc { font-size: 12px; color: var(--muted); }
+    .live { background: rgba(100,223,223,0.15); color: var(--teal); }
+    .active { background: rgba(139,127,255,0.15); color: var(--lavender); }
+    .new { background: rgba(255,217,61,0.15); color: var(--gold); }
+
+    /* ── Links ── */
+    .links-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .link-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--glass-border); background: var(--glass);
+      border-radius: 12px; padding: 12px 18px;
+      text-decoration: none; color: var(--text); font-size: 13px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .link-btn:hover { border-color: rgba(139,127,255,0.4); background: rgba(139,127,255,0.08); }
+    .link-btn .dot { font-size: 10px; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center; padding: 60px 0 80px;
+      border-top: 1px solid var(--glass-border); margin-top: 80px;
+    }
+    .footer-logo {
+      font-family: 'Space Mono', monospace; font-size: 16px;
+      font-weight: 700; letter-spacing: 2px;
+      color: var(--lavender); margin-bottom: 8px;
+    }
+    footer p { font-size: 13px; color: var(--dim); }
+
+    /* ── Divider ── */
+    hr { border: none; border-top: 1px solid var(--glass-border); margin: 48px 0; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .team-row { gap: 8px; }
+      h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="wrap">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:24px;">
+      <a style="border:1px solid rgba(139,127,255,0.5);background:rgba(139,127,255,0.1);border-radius:100px;padding:4px 14px;font-size:12px;text-decoration:none;color:#8B7FFF;font-family:'Space Mono',monospace;" href="#">EN</a>
+      <a style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);border-radius:100px;padding:4px 14px;font-size:12px;text-decoration:none;color:rgba(238,238,245,0.5);font-family:'Space Mono',monospace;" href="/alexei-ru.html">RU</a>
+      <a style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.04);border-radius:100px;padding:4px 14px;font-size:12px;text-decoration:none;color:rgba(238,238,245,0.5);font-family:'Space Mono',monospace;" href="/alexei-he.html">עב</a>
+    </div>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      DreamNova · March 2026 · Mission Brief
+    </div>
+    <h1>
+      Welcome,<br>
+      <span class="gradient-name">Alexei.</span>
+    </h1>
+    <p class="subtitle">
+      This is your command center for March 2026.<br>
+      Everything you need. Everything you own. Let's build.
+    </p>
+
+    <!-- Team -->
+    <div class="team-row">
+      <div class="team-pill">
+        <div>
+          <div class="name">David</div>
+          <div class="role">CEO · Vision · Clients</div>
+        </div>
+      </div>
+      <div class="team-pill you-pill">
+        <div>
+          <div class="name">Alexei ← YOU</div>
+          <div class="role">CTO · Build · Deploy</div>
+        </div>
+      </div>
+      <div class="team-pill">
+        <div>
+          <div class="name">Ran (Smiley)</div>
+          <div class="role">Creative · Ads · Visuals</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── YOUR ROLE ── -->
+  <section>
+    <div class="role-card">
+      <div class="role-title">Your Role</div>
+      <h3>CTO — Build & Deploy</h3>
+      <p>You own the code. David owns the clients. Never contact clients directly. When something is deployed, send David the URL — he handles the rest.</p>
+    </div>
+
+    <div class="card">
+      <div class="rule-row">
+        <span class="rule-icon">🚫</span>
+        <div><strong>No client contact</strong> <span>— David manages all client communication. You build, David ships.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">⚡</span>
+        <div><strong>Ship daily</strong> <span>— At least one push to GitHub every working day. Progress > perfection.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">📸</span>
+        <div><strong>Screenshot before/after</strong> <span>— Every UI change. Drop screenshots in the shared folder.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">🔁</span>
+        <div><strong>Vercel deploys</strong> <span>— Every feature merged → <code style="color:var(--lavender);font-family:'Space Mono',monospace;font-size:12px">vercel --prod</code>. Vercel URL → David on WhatsApp.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">🧠</span>
+        <div><strong>Use Claude Code + Cursor AI</strong> <span>— You're the pilot, they're the engines. Prompt → review → ship.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── WEEK PLAN ── -->
+  <section>
+    <div class="section-label">March 2026</div>
+    <h2>Your Month, Week by Week</h2>
+
+    <div class="weeks">
+
+      <!-- WEEK 1 -->
+      <div class="week-card w1">
+        <div class="week-header">
+          <div>
+            <div class="week-num">Week 1 · March 10–16</div>
+            <div class="week-title">Setup & First Deploy</div>
+          </div>
+          <div class="week-tag">Foundation</div>
+        </div>
+        <div class="week-body">
+          <ul class="task-list">
+            <li>
+              <div>
+                <strong>Clone dreamnova-site & run locally</strong>
+                Install dependencies, run <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">npm run dev</code>, understand the Space Crystals design system
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Open FOR_CURSOR.md in Cursor AI</strong>
+                Use the one-prompt instructions to add the Veo 3.1 videos to Hero background + Portfolio section
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Polish all components to match Stitch screenshots</strong>
+                Navbar blur, Hero badge, Services cards, Portfolio hover effects, Pricing WhatsApp buttons
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Deploy to Vercel production</strong>
+                <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">vercel --prod</code> → send URL to David
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Verify RTL Hebrew on all sections</strong>
+                Test <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">/?locale=he</code>, <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">/?locale=en</code>, <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">/?locale=fr</code>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="week-card w2">
+        <div class="week-header">
+          <div>
+            <div class="week-num">Week 2 · March 17–23</div>
+            <div class="week-title">Client Sites Polish</div>
+          </div>
+          <div class="week-tag">Clients</div>
+        </div>
+        <div class="week-body">
+          <ul class="task-list">
+            <li>
+              <div>
+                <strong>HaEsh Sheli (Keren) — Oz VeHadar redesign</strong>
+                White background, orange #FF6B00 accents, sticky navbar, ProductCard hover effects. Repo: <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">keren-rabbi-israel-centralized</code>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Fix i18n raw keys on Keren site</strong>
+                "discoverCollection", "booksAvailable" showing raw → trace <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">i18n init</code>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Fix price update on variant change</strong>
+                ProductVariantModal → price state not refreshing when user switches כרוך/דיגיטלי
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Tikoun Aolam — verify deploy</strong>
+                Check build passes, routes work, Gold/Black design intact. <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">/produits?cat=X</code> (NOT <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">/produits/categorie</code>)
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Lighthouse audit on all client sites</strong>
+                Target: Performance > 90. Fix any LCP, CLS issues found
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="week-card w3">
+        <div class="week-header">
+          <div>
+            <div class="week-num">Week 3 · March 24–30</div>
+            <div class="week-title">AI Video Production</div>
+          </div>
+          <div class="week-tag">Flow/Veo 3.1</div>
+        </div>
+        <div class="week-body">
+          <ul class="task-list">
+            <li>
+              <div>
+                <strong>Learn the Google Flow → Veo 3.1 workflow</strong>
+                Settings → Tab "Vidéo" → "Veo 3.1 - Fast" → x1 count → Escape → prompt → Créer → 8-second clip
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Extend video x3 using "Prolonger"</strong>
+                Open clip → textbox "Que va-t-il se passer?" → continuation prompt → Prolonger → 32-second narrative
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Generate client-specific videos</strong>
+                Yaakov: Breslev books, warm library light. Esther: women's fashion, Jerusalem market. Tikoun: community, warmth
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Integrate into client hero sections</strong>
+                <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">opacity-20</code> bg video, desktop only, preload="none" for performance
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Build DreamNova AI Video portfolio page</strong>
+                Showcase reel of all generated videos with client context
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="week-card w4">
+        <div class="week-header">
+          <div>
+            <div class="week-num">Week 4 · March 31+</div>
+            <div class="week-title">New Features & Scale</div>
+          </div>
+          <div class="week-tag">Growth</div>
+        </div>
+        <div class="week-body">
+          <ul class="task-list">
+            <li>
+              <div>
+                <strong>DreamNova Consult — Contact form backend</strong>
+                <code style="font-family:'Space Mono',monospace;color:var(--teal);font-size:12px">POST /api/contact</code> → Resend email → confirmation auto-reply
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Nova Key NFC ($63) — Stripe checkout</strong>
+                dreamnova.vercel.app — hook up Stripe checkout, Supabase orders table, success page
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Ran Badran site — Image corrections</strong>
+                Fix "נראה" → "כנראה" remaining images. Nano Banana Pro = rebuild from scratch (David confirms)
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Support Ran (Smiley) with creative assets</strong>
+                Export design tokens, generate social media templates, build ad landing pages based on his creative brief
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Monthly audit — GitHub repos</strong>
+                9 repos without remote = risk. Push all active projects to GitHub before month end
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── STACK ── -->
+  <section>
+    <div class="section-label">Tech Stack</div>
+    <h2>Your Toolkit</h2>
+    <div class="stack-grid">
+      <div class="stack-item">
+        <span class="icon">⚡</span>
+        <div class="name">Next.js 15</div>
+        <div class="desc">App Router, TypeScript</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🎨</span>
+        <div class="name">Tailwind CSS v4</div>
+        <div class="desc">CSS variables, mobile-first</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🌍</span>
+        <div class="name">next-intl</div>
+        <div class="desc">HE / EN / FR + RTL</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🎬</span>
+        <div class="name">Google Flow</div>
+        <div class="desc">Veo 3.1 — cinematic video</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🚀</span>
+        <div class="name">Vercel</div>
+        <div class="desc">Auto-deploy on push</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🤖</span>
+        <div class="name">Cursor AI</div>
+        <div class="desc">AI-powered editor</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🧠</span>
+        <div class="name">Claude Code</div>
+        <div class="desc">Terminal AI assistant</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">💳</span>
+        <div class="name">Stripe</div>
+        <div class="desc">Payments (test → live)</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🗄️</span>
+        <div class="name">Supabase</div>
+        <div class="desc">PostgreSQL + Auth</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">✉️</span>
+        <div class="name">Resend</div>
+        <div class="desc">Transactional emails</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🐙</span>
+        <div class="name">GitHub</div>
+        <div class="desc">git push → auto deploy</div>
+      </div>
+      <div class="stack-item">
+        <span class="icon">🎭</span>
+        <div class="name">Framer Motion</div>
+        <div class="desc">GPU animations only</div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── CLIENTS ── -->
+  <section>
+    <div class="section-label">Active Clients</div>
+    <h2>Who You're Building For</h2>
+    <div class="client-grid">
+      <div class="client-card">
+        <div class="client-name">HaEsh Sheli (Keren)</div>
+        <span class="client-tag live">Live</span>
+        <div class="client-desc">43+ Breslev books. Multilingual store. Yaakov Renne. Needs Oz VeHadar redesign — white/orange.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-name">Esther Ifrah</div>
+        <span class="client-tag live">Live</span>
+        <div class="client-desc">Women's Breslev site. ultime-esther-ifra-breslev.vercel.app. Minor fixes as needed.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-name">Tikoun Aolam</div>
+        <span class="client-tag new">New · Feb 27</span>
+        <div class="client-desc">Next.js 16.1.6 + React 19. #D4AF37 gold. Build passes. Verify routing + deploy.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-name">Ran Badran</div>
+        <span class="client-tag active">Active</span>
+        <div class="client-desc">Kids animator. Image text fixes. 052-8431231. Nano Banana Pro = from scratch (await David).</div>
+      </div>
+      <div class="client-card">
+        <div class="client-name">DreamNova Consult</div>
+        <span class="client-tag active">Portfolio</span>
+        <div class="client-desc">dreamnova-consult.vercel.app — our main agency site. Space Crystals. Add contact form backend.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-name">Nova Key NFC</div>
+        <span class="client-tag new">Phase 2</span>
+        <div class="client-desc">dreamnova.vercel.app — $63 NFC sacred key. Connect Stripe + Supabase orders flow.</div>
+      </div>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── LINKS ── -->
+  <section>
+    <div class="section-label">Quick Links</div>
+    <h2>Open These Daily</h2>
+    <div class="links-grid">
+      <a class="link-btn" href="https://github.com/CodeNoLimits/dreamnova-david-alexei" target="_blank">
+        <span class="dot" style="color:var(--lavender)">⬡</span> dreamnova-site GitHub
+      </a>
+      <a class="link-btn" href="https://dreamnova-site-9pw4yzihd-dream-ais-projects.vercel.app" target="_blank">
+        <span class="dot" style="color:var(--teal)">⬡</span> Vercel Preview
+      </a>
+      <a class="link-btn" href="https://vercel.com/dream-ais-projects" target="_blank">
+        <span class="dot" style="color:var(--teal)">⬡</span> Vercel Dashboard
+      </a>
+      <a class="link-btn" href="https://dreamnova-project-map.vercel.app/" target="_blank">
+        <span class="dot" style="color:var(--gold)">⬡</span> 84 Projects Map
+      </a>
+      <a class="link-btn" href="https://dreamnova-status-hub.vercel.app/" target="_blank">
+        <span class="dot" style="color:var(--coral)">⬡</span> Status Hub
+      </a>
+      <a class="link-btn" href="https://haesh-sheli-new.vercel.app" target="_blank">
+        <span class="dot" style="color:var(--lavender)">⬡</span> HaEsh Sheli (Keren)
+      </a>
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- ── RULES ── -->
+  <section>
+    <div class="section-label">Non-negotiable</div>
+    <h2>The Golden Rules</h2>
+    <div class="card" style="display:flex;flex-direction:column;gap:0;">
+      <div class="rule-row">
+        <span class="rule-icon">1</span>
+        <div><strong>Read before you write.</strong> <span>Always read the file before editing it. Never assume project state.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">2</span>
+        <div><strong>Conventional commits only.</strong> <span><code style="font-family:'Space Mono',monospace;color:var(--lavender);font-size:12px">feat:</code> <code style="font-family:'Space Mono',monospace;color:var(--lavender);font-size:12px">fix:</code> <code style="font-family:'Space Mono',monospace;color:var(--lavender);font-size:12px">chore:</code> — one feature per commit.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">3</span>
+        <div><strong>Lighthouse > 90.</strong> <span>Performance, accessibility, SEO. Test before every deploy.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">4</span>
+        <div><strong>Mobile-first always.</strong> <span>Design at 390px first (iPhone 15), then scale up to 1440px.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">5</span>
+        <div><strong>Never revoke API keys.</strong> <span>If something breaks, debug. Never delete credentials.</span></div>
+      </div>
+      <div class="rule-row">
+        <span class="rule-icon">6</span>
+        <div><strong>Shabbat off.</strong> <span>Friday evening → Saturday evening: zero work. Also Tuesday evenings.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-logo">DREAMNOVA</div>
+    <p>Na Nach Nachma Nachman MeUman — Ein Ye'ush Ba'olam Klal</p>
+    <p style="margin-top:8px;">March 2026 · Jerusalem, Israel · dreamnovaultimate@gmail.com</p>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>אלכסי — משימת DreamNova · מרץ 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06060C; --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.08);
+      --lavender: #8B7FFF; --teal: #64DFDF; --coral: #FF8A80; --gold: #FFD93D;
+      --text: #EEEEF5; --muted: rgba(238,238,245,0.5); --dim: rgba(238,238,245,0.25);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Heebo', sans-serif; line-height: 1.7; overflow-x: hidden; direction: rtl; }
+    .stars { position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background: radial-gradient(1px 1px at 10% 15%, rgba(139,127,255,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 25% 40%, rgba(100,223,223,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 50% 10%, white 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(139,127,255,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 85% 30%, rgba(100,223,223,0.6) 0%, transparent 100%), radial-gradient(1px 1px at 15% 75%, white 0%, transparent 100%), radial-gradient(2px 2px at 30% 20%, rgba(139,127,255,0.3) 0%, transparent 100%), radial-gradient(2px 2px at 65% 25%, rgba(100,223,223,0.3) 0%, transparent 100%); }
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(80px); opacity: 0.12; }
+    .orb-1 { width: 600px; height: 600px; background: var(--lavender); top: -200px; right: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--teal); bottom: 100px; left: -100px; }
+    .orb-3 { width: 300px; height: 300px; background: var(--coral); top: 50%; right: 40%; }
+    .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    header { padding: 80px 0 60px; text-align: center; }
+    .badge { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(139,127,255,0.3); background: rgba(139,127,255,0.08); border-radius: 100px; padding: 6px 16px; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--lavender); margin-bottom: 28px; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.8); } }
+    h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .gradient-name { background: linear-gradient(135deg, #8B7FFF 0%, #64DFDF 50%, #FFD93D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 auto 40px; }
+    .team-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 60px; direction: rtl; }
+    .team-pill { display: flex; align-items: center; gap: 8px; border: 1px solid var(--glass-border); background: var(--glass); border-radius: 100px; padding: 8px 18px; font-size: 13px; }
+    .team-pill .role { color: var(--muted); font-size: 11px; }
+    .you-pill { border-color: rgba(139,127,255,0.4); background: rgba(139,127,255,0.08); }
+    .you-pill .name { color: var(--lavender); font-weight: 700; }
+    section { margin-bottom: 64px; }
+    .section-label { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--teal); margin-bottom: 12px; }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 24px; }
+    .card { border: 1px solid var(--glass-border); background: var(--glass); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px); }
+    .role-card { border: 1px solid rgba(139,127,255,0.3); background: linear-gradient(135deg, rgba(139,127,255,0.08), rgba(100,223,223,0.04)); border-radius: 24px; padding: 36px; margin-bottom: 40px; }
+    .role-title { font-size: 13px; font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 2px; color: var(--lavender); margin-bottom: 16px; }
+    .role-card h3 { font-size: 30px; font-weight: 800; margin-bottom: 8px; }
+    .role-card p { color: var(--muted); font-size: 16px; max-width: 520px; }
+    .rule-row { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--glass-border); font-size: 15px; flex-direction: row-reverse; text-align: right; }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-icon { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; margin-top: 2px; }
+    .rule-row strong { color: var(--text); }
+    .rule-row span { color: var(--muted); font-size: 13px; }
+    .weeks { display: flex; flex-direction: column; gap: 20px; }
+    .week-card { border-radius: 20px; overflow: hidden; }
+    .week-header { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid var(--glass-border); flex-direction: row-reverse; text-align: right; }
+    .week-num { font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+    .week-title { font-size: 18px; font-weight: 700; }
+    .week-tag { margin-right: auto; margin-left: 0; border-radius: 100px; padding: 4px 12px; font-size: 11px; font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
+    .week-body { padding: 20px 24px; }
+    .task-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .task-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); flex-direction: row-reverse; text-align: right; }
+    .task-list li::before { display: none; }
+    .task-list li::after { content: '←'; color: var(--teal); font-family: 'Space Mono', monospace; font-size: 12px; margin-top: 2px; flex-shrink: 0; }
+    .task-list li strong { color: var(--text); display: block; font-size: 14px; }
+    .w1 { background: linear-gradient(135deg, rgba(139,127,255,0.06), rgba(100,223,223,0.03)); border: 1px solid rgba(139,127,255,0.2); }
+    .w1 .week-tag { background: rgba(139,127,255,0.15); color: var(--lavender); }
+    .w2 { background: linear-gradient(135deg, rgba(100,223,223,0.06), rgba(139,127,255,0.03)); border: 1px solid rgba(100,223,223,0.2); }
+    .w2 .week-tag { background: rgba(100,223,223,0.15); color: var(--teal); }
+    .w3 { background: linear-gradient(135deg, rgba(255,217,61,0.05), rgba(100,223,223,0.03)); border: 1px solid rgba(255,217,61,0.2); }
+    .w3 .week-tag { background: rgba(255,217,61,0.15); color: var(--gold); }
+    .w4 { background: linear-gradient(135deg, rgba(255,138,128,0.05), rgba(139,127,255,0.03)); border: 1px solid rgba(255,138,128,0.2); }
+    .w4 .week-tag { background: rgba(255,138,128,0.15); color: var(--coral); }
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .stack-item { border: 1px solid var(--glass-border); background: var(--glass); border-radius: 14px; padding: 16px; text-align: center; }
+    .stack-item .icon { font-size: 24px; margin-bottom: 8px; display: block; }
+    .stack-item .name { font-size: 13px; font-weight: 700; color: var(--text); }
+    .stack-item .desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .client-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 600px) { .client-grid { grid-template-columns: 1fr; } }
+    .client-card { border: 1px solid var(--glass-border); background: var(--glass); border-radius: 16px; padding: 18px; text-align: right; }
+    .client-name { font-weight: 700; font-size: 15px; }
+    .client-tag { display: inline-block; border-radius: 100px; padding: 2px 10px; font-size: 10px; font-family: 'Space Mono', monospace; text-transform: uppercase; letter-spacing: 1px; margin: 6px 0; }
+    .client-desc { font-size: 12px; color: var(--muted); }
+    .live { background: rgba(100,223,223,0.15); color: var(--teal); }
+    .active { background: rgba(139,127,255,0.15); color: var(--lavender); }
+    .new { background: rgba(255,217,61,0.15); color: var(--gold); }
+    .links-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+    .link-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--glass-border); background: var(--glass); border-radius: 12px; padding: 12px 18px; text-decoration: none; color: var(--text); font-size: 13px; transition: border-color 0.2s; }
+    .link-btn:hover { border-color: rgba(139,127,255,0.4); background: rgba(139,127,255,0.08); }
+    footer { text-align: center; padding: 60px 0 80px; border-top: 1px solid var(--glass-border); margin-top: 80px; }
+    .footer-logo { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; letter-spacing: 2px; color: var(--lavender); margin-bottom: 8px; }
+    footer p { font-size: 13px; color: var(--dim); }
+    hr { border: none; border-top: 1px solid var(--glass-border); margin: 48px 0; }
+    code { font-family: 'Space Mono', monospace; color: var(--teal); font-size: 12px; direction: ltr; display: inline-block; }
+    .lang-switcher { display: flex; gap: 8px; justify-content: center; margin-bottom: 24px; }
+    .lang-btn { border: 1px solid var(--glass-border); background: var(--glass); border-radius: 100px; padding: 4px 14px; font-size: 12px; text-decoration: none; color: var(--muted); font-family: 'Space Mono', monospace; }
+    .lang-btn.active { border-color: rgba(139,127,255,0.5); color: var(--lavender); background: rgba(139,127,255,0.1); }
+  </style>
+</head>
+<body>
+<div class="stars"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="wrap">
+
+  <header>
+    <div class="lang-switcher">
+      <a class="lang-btn" href="/alexei.html">EN</a>
+      <a class="lang-btn" href="/alexei-ru.html">RU</a>
+      <a class="lang-btn active" href="#">עב</a>
+    </div>
+    <div class="badge"><span class="badge-dot"></span>DreamNova · מרץ 2026 · משימה</div>
+    <h1>ברוך הבא,<br><span class="gradient-name">אלכסי.</span></h1>
+    <p class="subtitle">זה מרכז הפיקוד שלך למרץ 2026.<br>כל מה שצריך לדעת. כל מה שצריך לעשות. בונים.</p>
+    <div class="team-row">
+      <div class="team-pill"><div><div class="name">דוד</div><div class="role">מנכ"ל · חזון · לקוחות</div></div></div>
+      <div class="team-pill you-pill"><div><div class="name">אלכסי ← אתה</div><div class="role">CTO · פיתוח · פריסה</div></div></div>
+      <div class="team-pill"><div><div class="name">רן (סמיילי)</div><div class="role">קריאייטיב · פרסום · ויזואל</div></div></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="role-card">
+      <div class="role-title">התפקיד שלך</div>
+      <h3>CTO — לבנות ולפרוס</h3>
+      <p>אתה הבעלים של הקוד. דוד הבעלים של הלקוחות. לעולם אל תפנה ישירות ללקוחות. פרסת? שלח לדוד את הקישור — הוא מסתדר עם השאר.</p>
+    </div>
+    <div class="card">
+      <div class="rule-row"><span class="rule-icon">🚫</span><div><strong>אין קשר עם לקוחות</strong> <span>— דוד מנהל את כל התקשורת. אתה בונה, דוד מוסר.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">⚡</span><div><strong>לשלוח כל יום</strong> <span>— לפחות push אחד ל-GitHub בכל יום עבודה. התקדמות חשובה מפרפקציוניזם.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">📸</span><div><strong>צילום מסך לפני/אחרי</strong> <span>— כל שינוי UI. לשים צילומי מסך בתיקייה המשותפת.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">🚀</span><div><strong>פריסת Vercel</strong> <span>— כל פיצ'ר שנמוזג → <code>vercel --prod</code>. URL → לדוד ב-WhatsApp.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">🧠</span><div><strong>השתמש ב-Claude Code + Cursor AI</strong> <span>— אתה הטייס, הם המנועים. פרומפט → בדוק → שלח.</span></div></div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <div class="section-label">מרץ 2026</div>
+    <h2>החודש שלך, שבוע אחרי שבוע</h2>
+    <div class="weeks">
+
+      <div class="week-card w1">
+        <div class="week-header">
+          <div><div class="week-num">שבוע 1 · 10–16 מרץ</div><div class="week-title">הגדרה ופריסה ראשונה</div></div>
+          <div class="week-tag">יסודות</div>
+        </div>
+        <div class="week-body"><ul class="task-list">
+          <li><div><strong>לשכפל את dreamnova-site ולהריץ מקומית</strong>להתקין תלויות, להריץ <code>npm run dev</code>, להבין את מערכת עיצוב Space Crystals</div></li>
+          <li><div><strong>לפתוח FOR_CURSOR.md ב-Cursor AI</strong>להשתמש בהוראות בפרומפט אחד: להוסיף וידאו Veo 3.1 ל-Hero + לחלק Portfolio</div></li>
+          <li><div><strong>לצחצח את כל הקומפוננטות לפי צילומי ה-Stitch</strong>טשטוש Navbar, בדג' Hero, כרטיסי Services, אפקטי hover ב-Portfolio, כפתורי WhatsApp ב-Pricing</div></li>
+          <li><div><strong>לפרוס ל-Vercel production</strong><code>vercel --prod</code> → לשלוח URL לדוד</div></li>
+          <li><div><strong>לבדוק RTL עברית בכל הסקציות</strong>לבדוק <code>/?locale=he</code>, <code>/?locale=en</code>, <code>/?locale=fr</code></div></li>
+        </ul></div>
+      </div>
+
+      <div class="week-card w2">
+        <div class="week-header">
+          <div><div class="week-num">שבוע 2 · 17–23 מרץ</div><div class="week-title">צחצוח אתרי לקוחות</div></div>
+          <div class="week-tag">לקוחות</div>
+        </div>
+        <div class="week-body"><ul class="task-list">
+          <li><div><strong>האש שלי (כרן) — עיצוב מחדש "עוז והדר"</strong>רקע לבן, הדגשות כתומות #FF6B00, navbar דביק, אפקטי hover על ProductCard. ריפו: <code>keren-rabbi-israel-centralized</code></div></li>
+          <li><div><strong>לתקן מפתחות תרגום גולמיים באתר כרן</strong>"discoverCollection", "booksAvailable" מוצגים כמו שהם → לבדוק אתחול i18n</div></li>
+          <li><div><strong>לתקן עדכון מחיר בשינוי ווריאנט</strong>ProductVariantModal → מצב המחיר לא מתרענן בעת החלפת כרוך/דיגיטלי</div></li>
+          <li><div><strong>תיקון עולם — לאמת פריסה</strong>לוודא שהבנייה עוברת, הניתובים עובדים, עיצוב הזהב/שחור שלם. <code>/produits?cat=X</code></div></li>
+          <li><div><strong>ביקורת Lighthouse לכל אתרי הלקוחות</strong>יעד: ביצועים > 90. לתקן בעיות LCP, CLS שנמצאו</div></li>
+        </ul></div>
+      </div>
+
+      <div class="week-card w3">
+        <div class="week-header">
+          <div><div class="week-num">שבוע 3 · 24–30 מרץ</div><div class="week-title">הפקת וידאו AI</div></div>
+          <div class="week-tag">Flow/Veo 3.1</div>
+        </div>
+        <div class="week-body"><ul class="task-list">
+          <li><div><strong>ללמוד את תהליך Google Flow → Veo 3.1</strong>הגדרות → לשונית "Vidéo" → "Veo 3.1 - Fast" → x1 → Escape → פרומפט → Créer → קליפ 8 שניות</div></li>
+          <li><div><strong>להאריך וידאו x3 דרך "Prolonger"</strong>לפתוח קליפ → תיבת טקסט "Que va-t-il se passer?" → פרומפט המשך → Prolonger → נרטיב 32 שניות</div></li>
+          <li><div><strong>ליצור וידאו ספציפי ללקוחות</strong>כרן: ספרי ברסלב, אור ספרייה חמים. אסתר: אופנת נשים, שוק ירושלים. תיקון: קהילה, חמימות</div></li>
+          <li><div><strong>לשלב בסקציות hero של לקוחות</strong>וידאו רקע <code>opacity-20</code>, דסקטופ בלבד, <code>preload="none"</code> לביצועים</div></li>
+          <li><div><strong>לבנות דף תיק עבודות וידאו AI של DreamNova</strong>סרטון הדגמה של כל הוידאו שנוצרו עם הקשר לקוחות</div></li>
+        </ul></div>
+      </div>
+
+      <div class="week-card w4">
+        <div class="week-header">
+          <div><div class="week-num">שבוע 4 · 31 מרץ+</div><div class="week-title">פיצ'רים חדשים וצמיחה</div></div>
+          <div class="week-tag">צמיחה</div>
+        </div>
+        <div class="week-body"><ul class="task-list">
+          <li><div><strong>DreamNova Consult — בקאנד לטופס יצירת קשר</strong><code>POST /api/contact</code> → מייל Resend → תשובה אוטומטית לאישור</div></li>
+          <li><div><strong>Nova Key NFC ($63) — checkout Stripe</strong>dreamnova.vercel.app — לחבר checkout Stripe, טבלת הזמנות Supabase, דף הצלחה</div></li>
+          <li><div><strong>אתר רן בדראן — תיקון תמונות</strong>לתקן תמונות "נראה" → "כנראה" שנותרו. ננו בנאנה פרו = בנייה מאפס (לחכות לדוד)</div></li>
+          <li><div><strong>תמיכה לרן (סמיילי) עם נכסים קריאייטיביים</strong>לייצא טוקני עיצוב, ליצור תבניות לרשתות חברתיות, לבנות דפי נחיתה לפרסום</div></li>
+          <li><div><strong>ביקורת חודשית — ריפוזיטורים GitHub</strong>9 ריפוזיטורים ללא remote = סיכון. לדחוף את כל הפרויקטים הפעילים ל-GitHub לפני סוף החודש</div></li>
+        </ul></div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <div class="section-label">טכנולוגיות</div>
+    <h2>ארגז הכלים שלך</h2>
+    <div class="stack-grid">
+      <div class="stack-item"><span class="icon">⚡</span><div class="name">Next.js 15</div><div class="desc">App Router, TypeScript</div></div>
+      <div class="stack-item"><span class="icon">🎨</span><div class="name">Tailwind CSS v4</div><div class="desc">CSS variables, mobile-first</div></div>
+      <div class="stack-item"><span class="icon">🌍</span><div class="name">next-intl</div><div class="desc">עב / EN / FR + RTL</div></div>
+      <div class="stack-item"><span class="icon">🎬</span><div class="name">Google Flow</div><div class="desc">Veo 3.1 — וידאו קולנועי</div></div>
+      <div class="stack-item"><span class="icon">🚀</span><div class="name">Vercel</div><div class="desc">פריסה אוטומטית ב-push</div></div>
+      <div class="stack-item"><span class="icon">🤖</span><div class="name">Cursor AI</div><div class="desc">עורך קוד עם AI</div></div>
+      <div class="stack-item"><span class="icon">🧠</span><div class="name">Claude Code</div><div class="desc">AI בטרמינל</div></div>
+      <div class="stack-item"><span class="icon">💳</span><div class="name">Stripe</div><div class="desc">תשלומים (בדיקה → ייצור)</div></div>
+      <div class="stack-item"><span class="icon">🗄️</span><div class="name">Supabase</div><div class="desc">PostgreSQL + Auth</div></div>
+      <div class="stack-item"><span class="icon">✉️</span><div class="name">Resend</div><div class="desc">מיילים טרנזקציונליים</div></div>
+      <div class="stack-item"><span class="icon">🐙</span><div class="name">GitHub</div><div class="desc">git push → פריסה אוטו'</div></div>
+      <div class="stack-item"><span class="icon">🎭</span><div class="name">Framer Motion</div><div class="desc">אנימציות GPU בלבד</div></div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <div class="section-label">לקוחות פעילים</div>
+    <h2>בשבילמי אתה בונה</h2>
+    <div class="client-grid">
+      <div class="client-card"><div class="client-name">האש שלי (כרן)</div><span class="client-tag live">חי</span><div class="client-desc">43+ ספרי ברסלב. חנות רב-לשונית. יעקב רנה. צריך עיצוב מחדש "עוז והדר" — לבן/כתום.</div></div>
+      <div class="client-card"><div class="client-name">אסתר יפרח</div><span class="client-tag live">חי</span><div class="client-desc">אתר ברסלב לנשים. תיקונים קטנים לפי הצורך.</div></div>
+      <div class="client-card"><div class="client-name">תיקון עולם</div><span class="client-tag new">חדש · 27 פבר</span><div class="client-desc">Next.js 16.1.6 + React 19. זהב #D4AF37. הבנייה עוברת. לאמת ניתובים + פריסה.</div></div>
+      <div class="client-card"><div class="client-name">רן בדראן</div><span class="client-tag active">פעיל</span><div class="client-desc">מוביל בידור לילדים. תיקון טקסט בתמונות. ננו בנאנה פרו = מאפס (לחכות לדוד).</div></div>
+      <div class="client-card"><div class="client-name">DreamNova Consult</div><span class="client-tag active">תיק עבודות</span><div class="client-desc">האתר הראשי שלנו. Space Crystals. להוסיף בקאנד לטופס יצירת קשר.</div></div>
+      <div class="client-card"><div class="client-name">Nova Key NFC</div><span class="client-tag new">שלב 2</span><div class="client-desc">dreamnova.vercel.app — מפתח NFC קדוש ב-$63. לחבר Stripe + זרימת הזמנות Supabase.</div></div>
+    </div>
+  </section>
+
+  <hr />
+
+  <section>
+    <div class="section-label">חוקי הזהב</div>
+    <h2>אין לשבור</h2>
+    <div class="card" style="display:flex;flex-direction:column;gap:0;">
+      <div class="rule-row"><span class="rule-icon">1</span><div><strong>לקרוא לפני שכותבים.</strong> <span>תמיד לקרוא את הקובץ לפני עריכה. לעולם לא להניח מצב הפרויקט.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">2</span><div><strong>קומיטים קונבנציונליים בלבד.</strong> <span><code>feat:</code> <code>fix:</code> <code>chore:</code> — פיצ'ר אחד לקומיט.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">3</span><div><strong>Lighthouse > 90.</strong> <span>ביצועים, נגישות, SEO. לבדוק לפני כל פריסה.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">4</span><div><strong>Mobile-first תמיד.</strong> <span>עיצוב מתחיל ב-390px (iPhone 15), אחר כך מתרחב ל-1440px.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">5</span><div><strong>לעולם לא לבטל מפתחות API.</strong> <span>אם משהו נשבר — לדבג. לעולם לא למחוק פרטי גישה.</span></div></div>
+      <div class="rule-row"><span class="rule-icon">6</span><div><strong>שבת — יום מנוחה.</strong> <span>שישי בערב → שבת בערב: אפס עבודה. גם שלישי בערב.</span></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">DREAMNOVA</div>
+    <p>נ נח נחמ נחמן מאומן — אין יאוש בעולם כלל</p>
+    <p style="margin-top:8px;">מרץ 2026 · ירושלים, ישראל · dreamnovaultimate@gmail.com</p>
+  </footer>
+
+</div>
+</body>
+</html>
