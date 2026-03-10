@@ -1,0 +1,157 @@
+# DreamNova Consult — Cursor Rules
+# ===================================
+# Ce fichier configure le comportement de Cursor AI pour ce projet.
+# Design System: "SPACE CRYSTALS" — Deep space + geometric crystal shapes
+
+## PROJECT IDENTITY
+- Project: DreamNova Consult — AI Automation Agency Landing Page + Portfolio
+- Team: David (founder, strategy, AI) + Alexei (social media, client outreach, learning dev)
+- Partner: Ariel (50/50), Melea (tech)
+- Languages: Hebrew (primary, RTL), English (LTR), French (LTR)
+- Contact: dreamnovaultimate@gmail.com
+
+## TECH STACK
+- Framework: Next.js 15 (App Router, TypeScript strict)
+- Styling: Tailwind CSS v4 + CSS Variables
+- i18n: next-intl (locales: he, en, fr — defaultLocale: he)
+- Animations: Framer Motion (GPU-accelerated only)
+- Payments: Stripe (@stripe/stripe-js) — Phase 2
+- Deployment: Vercel
+- Icons: lucide-react
+
+## DESIGN SYSTEM — "SPACE CRYSTALS"
+Deep space universe with floating crystal/diamond geometric elements.
+Minimalist but luxurious. Dreamy but professional.
+
+### Colors
+```
+--bg-deep: #06060C               /* Deep space black */
+--glass-bg: rgba(255,255,255,0.04)
+--glass-border: rgba(255,255,255,0.08)
+--glass-highlight: rgba(255,255,255,0.12)
+--accent-lavender: #8B7FFF        /* Primary — buttons, links, glow */
+--accent-teal: #64DFDF            /* Secondary — tags, checkmarks */
+--accent-coral: #FF8A80           /* Warm — sparingly */
+--accent-gold: #FFD93D            /* Gold — sparingly */
+--text-primary: #EEEEF5
+--text-secondary: rgba(238,238,245,0.5)
+--text-muted: rgba(238,238,245,0.3)
+```
+
+### Typography
+- Display/Body (Latin): Outfit (300-800)
+- Display/Body (Hebrew): Heebo (300-800)
+- Monospace (stats, prices, labels): Space Mono (400-700)
+
+### Border Radius
+- Cards: 24px
+- Buttons: 14px
+- Pills/badges: 100px
+
+### Glass Card Recipe
+```css
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.08);
+backdrop-filter: blur(24px);
+border-radius: 24px;
+/* Hover: border brighten + translateY(-4px) */
+```
+
+### Crystal Elements
+- Diamond shapes: CSS squares rotated 45deg with shimmer gradient
+- Slow rotation: 60s per full turn
+- Sizes: 16px (particles) → 200px (hero decorative)
+- Crystal text: animated gradient sweep (8s linear infinite)
+
+### Background Layers
+1. Star field: white dots at 2-4% opacity
+2. Nebula orbs: 3 blurred gradient circles (lavender, teal, coral)
+3. Noise texture: SVG at 2% opacity
+4. Grid overlay: 80px lines at 2% opacity
+
+### Animations (ALL GPU-accelerated — transform + opacity only)
+- Scroll reveal: fadeUp, stagger 0.1s
+- Card hover: translateY(-4px) + border brighten
+- Crystal rotation: rotate 360deg, 60s linear
+- Pulse dot: scale 1→1.3, 2s ease infinite
+- Nebula float: translate ±40px, 20-30s ease infinite
+- Crystal text shimmer: background-position sweep, 8s linear
+
+## CODING RULES (TAM CODING STYLE)
+1. NEVER rewrite entire files. Find the "good point" and iterate around it.
+2. Code must be EXHAUSTIVE, production-ready, deployable.
+3. Comments only on critical variables, zero fluff.
+4. Reuse existing modules — never reinvent the wheel.
+5. Mobile-first responsive (390px → 768px → 1024px → 1440px).
+6. ALL text via next-intl useTranslations(), NEVER hardcoded.
+7. RTL/LTR handled via dir attribute on html element.
+8. Lighthouse > 90, WCAG AA.
+9. CSS Variables — no hardcoded colors.
+10. TypeScript strict mode.
+11. Tailwind utility classes, CSS custom only in globals.css.
+12. No localStorage/sessionStorage.
+
+## FILE STRUCTURE
+```
+app/[locale]/layout.tsx      ← Root layout (fonts, dir, meta, providers)
+app/[locale]/page.tsx        ← Main page (imports all sections)
+app/[locale]/api/checkout/route.ts ← Stripe (Phase 2)
+components/
+  Navbar.tsx
+  Hero.tsx
+  Services.tsx
+  Portfolio.tsx
+  Pricing.tsx
+  Process.tsx
+  CTA.tsx
+  Footer.tsx
+  LanguageSwitcher.tsx
+  ui/
+    GlassCard.tsx
+    CrystalIcon.tsx
+    Button.tsx
+    Badge.tsx
+    SectionHeader.tsx
+    CrystalParticles.tsx
+messages/he.json, en.json, fr.json
+styles/globals.css
+lib/stripe.ts
+```
+
+## COMPONENT PATTERN
+```tsx
+'use client';
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+
+export default function SectionName() {
+  const t = useTranslations('section_key');
+  return (
+    <section id="section-id" className="py-24">
+      <div className="container mx-auto px-6 max-w-[1200px]">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}>
+          {/* content */}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+```
+
+## CURSOR-SPECIFIC INSTRUCTIONS
+When you open this project:
+1. Read this file first
+2. Design system tokens are in styles/globals.css
+3. Translations in messages/*.json
+4. Your job: inject Stitch exports, polish animations, optimize
+5. Check responsive at: 390px, 768px, 1024px, 1440px
+6. Check RTL Hebrew alignment
+7. Target Lighthouse > 90
+
+## PRIORITIES (CASH-FIRST)
+1. Site LIVE with working WhatsApp CTA → leads
+2. Portfolio → social proof
+3. Pricing → reduce friction
+4. Trilingual → Israel + France + International
+5. Stripe → Phase 2 (after site is live)
+MVP = Site live with WhatsApp > Perfect site never deployed
