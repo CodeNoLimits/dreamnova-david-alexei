@@ -93,8 +93,11 @@ Dans `components/Portfolio.tsx`, ajoute une card supplémentaire APRÈS la grill
 </div>
 ```
 
-### 3. POLISH GLOBAL — Match Stitch references exactement
-**Regarde les 4 screenshots Stitch** et ajuste chaque composant:
+### 3. POLISH GLOBAL — Match Stitch references + ÉLEVER CHAQUE SECTION
+
+⚠️ **CRITIQUE**: Le Hero est beau MAIS les sections en dessous (Services, Portfolio, Pricing, Process) sont trop plates et ternes. Chaque section doit être AUSSI spectaculaire que le Hero. Pas d'excuse. Référence: les 4 Stitch screenshots.
+
+**Regarde les 4 screenshots Stitch** et applique ces améliorations OBLIGATOIRES:
 
 #### Navbar (`components/Navbar.tsx`)
 - Logo: "DREAMNOVA" en Space Mono bold lavender `#8B7FFF` + ".consult" en muted
@@ -108,35 +111,82 @@ Dans `components/Portfolio.tsx`, ajoute une card supplémentaire APRÈS la grill
 - Stats: Space Mono, couleur lavender, `12+ | 3x | 48h`
 - CTA primaire: `background: linear-gradient(135deg, #6961ff, #8B7FFF)` + glow shadow
 
-#### Services (`components/Services.tsx`)
-- 3 cards glass avec `crystal-border-top` hover (déjà en globals.css)
-- Icons: ◆ (lavender) | ✦ (teal) | ▲ (coral `#FF8A80`)
-- Tags en bas: pill monospace avec border colored
+#### Services (`components/Services.tsx`) — ⚠️ SECTION LA PLUS IMPORTANTE À FIXER
+Le problème actuel: cards trop sombres, trop plates, pas de profondeur. Fix OBLIGATOIRE:
+```tsx
+// Chaque card doit avoir:
+// 1. Un fond glass vrai avec highlight en haut
+style={{
+  background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+  border: "1px solid rgba(255,255,255,0.10)",
+  borderRadius: "24px",
+  backdropFilter: "blur(20px)",
+  boxShadow: "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
+}}
+// 2. L'icône doit avoir un glow coloré:
+// Card 1 (lavender): filter: drop-shadow(0 0 12px rgba(139,127,255,0.6))
+// Card 2 (teal):     filter: drop-shadow(0 0 12px rgba(100,223,223,0.6))
+// Card 3 (coral):    filter: drop-shadow(0 0 12px rgba(255,138,128,0.6))
+// 3. Au hover: border-color → accent color + box-shadow avec glow accent
+// 4. Tag en bas: fond rgba(accent, 0.15) + border 1px solid rgba(accent, 0.3) + font-mono
+// 5. Section background: ajouter un orbe de lumière colored derrière chaque card
+```
+- Icons: ◆ (lavender 28px) | ✦ (teal 28px) | ▲ (coral 28px) — avec glow comme ci-dessus
+- Titre card: 20px bold, `color: #EEEEF5`
+- Description: 14px, `color: rgba(238,238,245,0.6)`, line-height 1.7
+- Tags en bas: pill monospace avec border colored (voir code ci-dessus)
 
 #### Portfolio (`components/Portfolio.tsx`)
 - 4 cards existantes: images réelles (lh3.googleusercontent.com URLs — NE PAS CHANGER)
-- Hover: `group-hover:scale-110` sur l'image + accent color sur le titre
+- Chaque card: `overflow: hidden`, `border-radius: 20px`, border glass
+- Image wrapper: `aspect-ratio: 16/10`, overflow hidden
+- Hover: `group-hover:scale-105` sur l'image (PAS 110 — trop agressif) + accent color sur le titre
+- Overlay gradient sur l'image au hover: `linear-gradient(to top, rgba(6,6,12,0.8), transparent)`
+- Info section sous l'image: titre bold + tech tags pills colorés
 - `prismatic-hover` class sur chaque card (déjà en globals.css)
 
-#### Pricing (`components/Pricing.tsx`)
+#### Pricing (`components/Pricing.tsx`) — ⚠️ CARTE FEATURED DOIT BRILLER
 - 3 tiers: STARTER ₪2,000 | BUSINESS ₪5,000 (featured) | PREMIUM ₪10,000
-- Featured card: ring lavender + badge "Most Popular"
-- Bouton WhatsApp: ouvre `https://wa.me/972XXXXXXXXX` avec message pré-rempli localisé
-- **IMPORTANT**: remplace `972XXXXXXXXX` par `972524000000` (placeholder — David change après)
+- Cartes normales: glass simple `rgba(255,255,255,0.04)` border `rgba(255,255,255,0.08)`
+- Featured card OBLIGATOIRE:
+  ```css
+  background: linear-gradient(135deg, rgba(139,127,255,0.12), rgba(100,223,223,0.06));
+  border: 1px solid rgba(139,127,255,0.4);
+  box-shadow: 0 0 40px rgba(139,127,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
+  transform: scale(1.04);
+  ```
+- Badge "Most Popular": fond lavender, texte blanc, position absolute top -14px centré
+- Prix: font-size 48px bold, gradient lavender→teal via `gradient-text-hero`
+- Features list: checkmark ✓ en teal, texte lisible, spacing correct
+- Bouton featured: `background: linear-gradient(135deg, #6961ff, #8B7FFF)` + glow + hover scale(1.02)
+- Bouton WhatsApp: ouvre `https://wa.me/972524000000` avec message pré-rempli localisé
 
-#### Process (`components/Process.tsx`)
-- 4 steps avec numéros faded en arrière-plan (01→04)
-- Connecting lines: SVG ou div avec gradient lavender→teal (desktop seulement)
-- "System Status: Optimal" badge en bas avec pulse dot teal
+#### Process (`components/Process.tsx`) — ⚠️ NUMÉROS FADED + LIGNE LUMINEUSE
+- 4 steps avec numéros GÉANTS faded en arrière-plan: `font-size: 120px, opacity: 0.06, font-weight: 900`
+- Node diamond: `clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)`, 16px, bg lavender
+- Connecting line desktop: `background: linear-gradient(90deg, #8B7FFF, #64DFDF)`, height 2px, opacity 0.4
+- Titre step: 16px bold lavender
+- "System Status: Operational" badge en bas: pulse dot teal + border teal
 
-#### CTA (`components/CTA.tsx`)
-- Box glass centré max-w 800px
-- 2 boutons: WhatsApp (lavender filled) + Email (glass outline)
+#### CTA (`components/CTA.tsx`) — ⚠️ DOIT ÊTRE LE CLIMAX VISUEL
+- Box glass centré max-w 800px avec:
+  ```css
+  background: linear-gradient(135deg, rgba(139,127,255,0.08), rgba(100,223,223,0.04));
+  border: 1px solid rgba(139,127,255,0.25);
+  box-shadow: 0 0 80px rgba(139,127,255,0.08);
+  border-radius: 32px;
+  padding: 64px;
+  ```
+- H2: gradient text lavender→teal
+- Subtitle: muted, max-width 480px, centré
+- 2 boutons côte à côte: WhatsApp (lavender filled, glow) + Email (glass outline avec hover glow)
 - Crystal decorations dans les coins (divs avec clip-path diamond, déjà dans globals.css)
+- Fond de section: orbe lavender diffus centré derrière la box
 
 #### Footer (`components/Footer.tsx`)
 - Single line: `© 2026 DreamNova Consult · dreamnovaultimate@gmail.com · Jerusalem, Israel`
 - Email en lavender linkable
+- Tagline Na Nach en muted très petit, centré sous le copyright
 
 ### 4. RTL HÉBREU — Vérification
 - Quand locale = `he`: `dir="rtl"` sur `<html>` (déjà dans layout.tsx ✅)

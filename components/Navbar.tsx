@@ -28,15 +28,18 @@ export default function Navbar() {
   };
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    // If we're on the home page, scroll to the section
+    if (typeof window !== "undefined" && (window.location.pathname === `/${locale}` || window.location.pathname === `/${locale}/`)) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }
     setMobileOpen(false);
   };
 
   const navLinks = [
-    { label: t("services"), id: "services" },
-    { label: t("portfolio"), id: "portfolio" },
-    { label: t("pricing"), id: "pricing" },
-    { label: t("process"), id: "process" },
+    { label: t("services"), id: "services", href: `/${locale}/services` },
+    { label: t("portfolio"), id: "portfolio", href: `/${locale}/portfolio` },
+    { label: t("pricing"), id: "pricing", href: `/${locale}/pricing` },
+    { label: t("process"), id: "process", href: `/${locale}/process` },
   ];
 
   const langConfig = [
@@ -80,16 +83,25 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
-            <button
+            <a
               key={link.id}
-              onClick={() => scrollTo(link.id)}
-              className="text-sm font-medium transition-colors duration-200"
-              style={{ color: "rgba(238,238,245,0.55)" }}
+              href={link.href}
+              className="text-sm font-medium transition-colors duration-200 relative group"
+              style={{
+                color: pathname.includes(`/${link.id}`) ? "#EEEEF5" : "rgba(238,238,245,0.55)",
+                textDecoration: "none",
+              }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#EEEEF5")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(238,238,245,0.55)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = pathname.includes(`/${link.id}`) ? "#EEEEF5" : "rgba(238,238,245,0.55)")}
             >
               {link.label}
-            </button>
+              {pathname.includes(`/${link.id}`) && (
+                <span
+                  className="absolute -bottom-1 left-0 right-0 h-px"
+                  style={{ background: "linear-gradient(90deg, transparent, #8B7FFF, transparent)" }}
+                />
+              )}
+            </a>
           ))}
         </div>
 
@@ -176,14 +188,15 @@ export default function Navbar() {
           >
             <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-5">
               {navLinks.map((link) => (
-                <button
+                <a
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
                   className="text-start text-base font-medium py-1"
-                  style={{ color: "#EEEEF5" }}
+                  style={{ color: "#EEEEF5", textDecoration: "none" }}
                 >
                   {link.label}
-                </button>
+                </a>
               ))}
 
               <div className="h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
