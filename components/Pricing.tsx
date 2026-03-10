@@ -8,7 +8,7 @@ export default function Pricing() {
   const t = useTranslations("pricing");
   const locale = useLocale();
 
-  const WHATSAPP_NUMBER = "972501234567"; // TODO: replace with real number
+  const WHATSAPP_NUMBER = "972524000000"; // Placeholder for David
 
   const openWhatsApp = (plan: "starter" | "business" | "premium") => {
     const msg = encodeURIComponent(t(`wa_${plan}`));

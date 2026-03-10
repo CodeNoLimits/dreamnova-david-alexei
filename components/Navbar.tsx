@@ -20,8 +20,13 @@ export default function Navbar() {
 
   const switchLocale = (newLocale: string) => {
     const segments = pathname.split("/");
-    segments[1] = newLocale;
-    router.push(segments.join("/"));
+    // If the path is just "/" or "/[locale]", segments will be ["", ""] or ["", "locale"]
+    if (segments.length > 1) {
+      segments[1] = newLocale;
+    } else {
+      segments.push(newLocale);
+    }
+    router.push(segments.join("/") || `/${newLocale}`);
     setMobileOpen(false);
   };
 

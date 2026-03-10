@@ -12,8 +12,20 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-4 z-10"
+      className="relative min-h-screen flex items-center justify-center pt-28 pb-20 px-4 z-10 overflow-hidden"
     >
+      {/* Background Video (Desktop only) */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-20 hidden lg:block"
+        style={{ zIndex: -1 }}
+      >
+        <source src="/videos/hero-market-dolly.mp4" type="video/mp4" />
+      </video>
+
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
         {/* Left — text */}
         <div>

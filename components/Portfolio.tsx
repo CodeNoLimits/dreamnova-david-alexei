@@ -148,6 +148,33 @@ export default function Portfolio() {
             </div>
           ))}
         </div>
+
+        {/* Video showcase — Cinematic AI videos */}
+        <div className="mt-12 rounded-xl overflow-hidden" style={{
+          border: "1px solid rgba(139,127,255,0.3)",
+          background: "rgba(139,127,255,0.05)",
+        }}>
+          <video
+            controls
+            playsInline
+            className="w-full"
+            style={{ maxHeight: "480px", objectFit: "cover" }}
+            poster="/stitch-1.png"
+          >
+            <source src="/videos/hero-craftsman-reveal.mp4" type="video/mp4" />
+          </video>
+          <div className="p-6">
+            <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "#8B7FFF" }}>
+              AI Cinematic Video
+            </span>
+            <h3 className="text-xl font-bold mt-2" style={{ color: "#EEEEF5" }}>
+              Jerusalem — Mahane Yehuda Transform
+            </h3>
+            <p className="text-sm mt-1" style={{ color: "rgba(238,238,245,0.5)" }}>
+              Generated with Veo 3.1 · 32 seconds · 4 segments extended
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
