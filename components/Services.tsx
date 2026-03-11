@@ -8,9 +8,8 @@ const serviceData = [
   {
     num: "01",
     accent: "#8B7FFF",
-    // Unsplash: sleek laptop with beautiful website on screen
-    imgUrl: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=900&q=75",
-    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(20,16,50,0.85) 55%, rgba(139,127,255,0.15) 100%",
+    imgUrl: "/images/Craftsman_in_modernized_shop_663f0bf1d1.jpeg",
+    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(20,16,50,0.82) 50%, rgba(139,127,255,0.18) 100%",
     iconBg: "rgba(139,127,255,0.15)",
     iconBorder: "rgba(139,127,255,0.3)",
     tagBg: "rgba(139,127,255,0.12)",
@@ -30,9 +29,8 @@ const serviceData = [
   {
     num: "02",
     accent: "#64DFDF",
-    // Unsplash: futuristic AI neural network visualization
-    imgUrl: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&w=900&q=75",
-    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(10,30,35,0.85) 55%, rgba(100,223,223,0.15) 100%",
+    imgUrl: "/images/A_sleek_futuristic_workspace_at_night_a_large_curv_d0b0bcfb2e.jpeg",
+    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(10,30,35,0.82) 50%, rgba(100,223,223,0.18) 100%",
     iconBg: "rgba(100,223,223,0.15)",
     iconBorder: "rgba(100,223,223,0.3)",
     tagBg: "rgba(100,223,223,0.1)",
@@ -52,9 +50,8 @@ const serviceData = [
   {
     num: "03",
     accent: "#FF8A80",
-    // Unsplash: person filming/creating content with phone, warm studio light
-    imgUrl: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=900&q=75",
-    gradient: "to top, rgba(6,6,18,0.97) 0%, rgba(35,12,12,0.85) 55%, rgba(255,138,128,0.15) 100%",
+    imgUrl: "/images/Smartphone_showing_instagram_grid_6b420871da.jpeg",
+    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(35,12,12,0.82) 50%, rgba(255,138,128,0.18) 100%",
     iconBg: "rgba(255,138,128,0.15)",
     iconBorder: "rgba(255,138,128,0.3)",
     tagBg: "rgba(255,138,128,0.1)",
@@ -83,6 +80,12 @@ export default function Services() {
 
   return (
     <section id="services" className="relative z-10 py-28 px-4 sm:px-6 overflow-x-hidden">
+      {/* Section divider glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px pointer-events-none"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(139,127,255,0.4), transparent)" }}
+      />
+
       <div className="max-w-6xl mx-auto w-full">
 
         {/* Header */}
@@ -90,32 +93,32 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20 px-2"
+          className="text-center mb-16 md:mb-20 px-2"
         >
           <span className="inline-block px-4 py-1.5 rounded-full mb-6 text-[11px] font-mono font-bold uppercase tracking-[0.25em] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20 text-[var(--accent-lavender)]">
             {t("label")}
           </span>
-          <h2 className="text-4xl md:text-[52px] font-black text-white mb-5 leading-[1.1] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-[52px] font-black text-white mb-5 leading-[1.1] tracking-tight">
             {t("title")}
           </h2>
-          <p className="text-base md:text-lg text-white/50 max-w-md mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-white/50 max-w-lg mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full">
           {services.map((svc, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.11 }}
-              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer"
-              style={{ minHeight: 360 }}
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer transition-transform duration-500 hover:-translate-y-1"
+              style={{ minHeight: 380 }}
             >
-              {/* ── Background image ── */}
+              {/* Background image — local images */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={svc.imgUrl}
@@ -125,35 +128,35 @@ export default function Services() {
                 loading="lazy"
               />
 
-              {/* ── Gradient overlay ── */}
+              {/* Gradient overlay */}
               <div
                 className="absolute inset-0"
                 style={{ background: `linear-gradient(${svc.gradient})` }}
               />
 
-              {/* ── Border ── */}
+              {/* Border */}
               <div
                 className="absolute inset-0 rounded-[22px] transition-all duration-500"
-                style={{ border: "1px solid rgba(255,255,255,0.1)" }}
+                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
               />
-              {/* ── Hover border glow ── */}
+              {/* Hover border glow */}
               <div
                 className="absolute inset-0 rounded-[22px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ boxShadow: `inset 0 0 0 1.5px ${svc.accent}55, 0 30px 70px ${svc.accent}12` }}
               />
-              {/* ── Top shimmer ── */}
+              {/* Top shimmer line */}
               <div
-                className="absolute top-0 inset-x-0 h-[1px] opacity-40 group-hover:opacity-100 transition-opacity duration-500"
+                className="absolute top-0 inset-x-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-center"
                 style={{ background: `linear-gradient(90deg, transparent, ${svc.accent}, transparent)` }}
               />
 
-              {/* ── Content ── */}
-              <div className="relative z-10 flex flex-col h-full p-8 gap-4">
+              {/* Content */}
+              <div className="relative z-10 flex flex-col h-full p-7 sm:p-8 gap-3">
 
-                {/* Top row */}
+                {/* Top row: icon + number */}
                 <div className="flex items-start justify-between">
                   <div
-                    className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110"
+                    className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
                     style={{
                       background: svc.iconBg,
                       border: `1px solid ${svc.iconBorder}`,
@@ -164,27 +167,27 @@ export default function Services() {
                   </div>
                   <span
                     className="text-[11px] font-mono font-bold tracking-widest mt-1"
-                    style={{ color: `${svc.accent}70` }}
+                    style={{ color: `${svc.accent}60` }}
                   >
                     {svc.num}
                   </span>
                 </div>
 
                 {/* Spacer to push content to bottom */}
-                <div className="flex-1" />
+                <div className="flex-1 min-h-[60px]" />
 
                 {/* Title */}
-                <h3 className="text-[21px] font-extrabold text-white leading-snug tracking-tight">
+                <h3 className="text-xl sm:text-[22px] font-extrabold text-white leading-snug tracking-tight">
                   {svc.title}
                 </h3>
 
                 {/* Description */}
-                <p className="text-[13.5px] text-white/60 leading-[1.7]">
+                <p className="text-[13.5px] text-white/55 leading-[1.75]">
                   {svc.desc}
                 </p>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between pt-4 mt-1 border-t border-white/[0.07]">
+                {/* Footer: tag + arrow */}
+                <div className="flex items-center justify-between pt-4 mt-auto border-t border-white/[0.06]">
                   <span
                     className="text-[10px] font-mono font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
                     style={{
@@ -196,14 +199,14 @@ export default function Services() {
                     {svc.tag}
                   </span>
                   <div
-                    className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 group-hover:translate-x-0"
+                    className="w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
                     style={{
-                      background: `${svc.accent}18`,
+                      background: `${svc.accent}15`,
                       color: svc.accent,
-                      border: `1px solid ${svc.accent}30`,
+                      border: `1px solid ${svc.accent}25`,
                     }}
                   >
-                    <ArrowUpRight size={14} strokeWidth={2.5} />
+                    <ArrowUpRight size={15} strokeWidth={2.5} />
                   </div>
                 </div>
               </div>

@@ -2,13 +2,13 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, MessageSquare } from "lucide-react";
 
 export default function Pricing() {
   const t = useTranslations("pricing");
   const locale = useLocale();
 
-  const WHATSAPP_NUMBER = "972544636377"; // Alexei
+  const WHATSAPP_NUMBER = "972544636377";
 
   const openWhatsApp = (plan: "starter" | "business" | "premium") => {
     const msg = encodeURIComponent(t(`wa_${plan}`));
@@ -27,11 +27,10 @@ export default function Pricing() {
       features: pkg1Features,
       plan: "starter" as const,
       featured: false,
-      accent: "rgba(100,223,223,0.6)",
+      accent: "#64DFDF",
       accentBg: "rgba(100,223,223,0.06)",
-      accentBorder: "rgba(100,223,223,0.18)",
+      accentBorder: "rgba(100,223,223,0.15)",
       btnLabel: t("btn_outline"),
-      btnStyle: "outline",
     },
     {
       name: t("pkg2_name"),
@@ -40,11 +39,10 @@ export default function Pricing() {
       features: pkg2Features,
       plan: "business" as const,
       featured: true,
-      accent: "rgba(139,127,255,0.9)",
+      accent: "#8B7FFF",
       accentBg: "rgba(139,127,255,0.1)",
-      accentBorder: "rgba(139,127,255,0.5)",
+      accentBorder: "rgba(139,127,255,0.4)",
       btnLabel: t("btn_primary"),
-      btnStyle: "filled",
     },
     {
       name: t("pkg3_name"),
@@ -53,35 +51,40 @@ export default function Pricing() {
       features: pkg3Features,
       plan: "premium" as const,
       featured: false,
-      accent: "rgba(255,138,128,0.6)",
+      accent: "#FF8A80",
       accentBg: "rgba(255,138,128,0.06)",
-      accentBorder: "rgba(255,138,128,0.18)",
+      accentBorder: "rgba(255,138,128,0.15)",
       btnLabel: t("btn_outline"),
-      btnStyle: "outline",
     },
   ];
 
   return (
-    <section id="pricing" className="relative z-10 py-32 px-6 text-center overflow-hidden">
+    <section id="pricing" className="relative z-10 py-28 px-4 sm:px-6 overflow-hidden">
+      {/* Section divider */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px pointer-events-none"
+        style={{ background: "linear-gradient(90deg, transparent, rgba(139,127,255,0.4), transparent)" }}
+      />
+
       {/* Ambient glow */}
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse, rgba(139,127,255,0.07) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse, rgba(139,127,255,0.06) 0%, transparent 70%)",
           filter: "blur(80px)",
         }}
       />
 
-      <div className="max-w-6xl mx-auto relative">
-        {/* ── Header ── */}
+      <div className="max-w-5xl mx-auto relative">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-14 text-center"
         >
           <div
-            className="inline-block px-4 py-1.5 rounded-full mb-5 text-xs font-mono uppercase tracking-[0.2em]"
+            className="inline-block px-4 py-1.5 rounded-full mb-5 text-[11px] font-mono font-bold uppercase tracking-[0.25em]"
             style={{
               background: "rgba(139,127,255,0.1)",
               border: "1px solid rgba(139,127,255,0.2)",
@@ -90,78 +93,72 @@ export default function Pricing() {
           >
             {t("label")}
           </div>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
             {t("title")}
           </h2>
-          <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: "rgba(238,238,245,0.5)" }}>
+          <p className="text-base md:text-lg text-white/50 max-w-xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
         </motion.div>
 
-        {/* ── Pricing Cards ── */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        {/* Pricing Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
           {tiers.map((tier, i) => (
             <motion.div
               key={tier.plan}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative rounded-[24px] flex flex-col"
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`relative rounded-[22px] flex flex-col transition-all duration-500 hover:-translate-y-1 ${
+                tier.featured ? "md:-mt-4 md:mb-4" : ""
+              }`}
               style={{
                 background: tier.featured
-                  ? "linear-gradient(160deg, rgba(139,127,255,0.14), rgba(100,223,223,0.07))"
-                  : "rgba(255,255,255,0.04)",
+                  ? "linear-gradient(160deg, rgba(139,127,255,0.12), rgba(100,223,223,0.06))"
+                  : "rgba(255,255,255,0.03)",
                 border: `1px solid ${tier.accentBorder}`,
                 backdropFilter: "blur(20px)",
                 boxShadow: tier.featured
-                  ? "0 0 60px rgba(139,127,255,0.15), 0 24px 64px rgba(0,0,0,0.4)"
+                  ? "0 0 50px rgba(139,127,255,0.12), 0 20px 60px rgba(0,0,0,0.4)"
                   : "0 8px 32px rgba(0,0,0,0.2)",
               }}
             >
               {/* Top accent line */}
               <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 h-px rounded-full"
+                className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full"
                 style={{
-                  width: "70%",
+                  width: tier.featured ? "80%" : "60%",
                   background: `linear-gradient(90deg, transparent, ${tier.accent}, transparent)`,
+                  opacity: tier.featured ? 1 : 0.5,
                 }}
               />
 
               {/* Popular badge */}
               {tier.featured && (
                 <div
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-[11px] font-black text-white whitespace-nowrap z-10"
+                  className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-5 py-1.5 rounded-full text-[10px] font-black text-white whitespace-nowrap z-10 uppercase tracking-[0.15em]"
                   style={{
                     background: "linear-gradient(135deg, #8B7FFF, #6A5FFF)",
                     boxShadow: "0 4px 20px rgba(139,127,255,0.5)",
-                    letterSpacing: "0.12em",
                     fontFamily: "var(--font-space-mono)",
                   }}
                 >
-                  ✦ {t("popular")} ✦
+                  {t("popular")}
                 </div>
               )}
 
-              <div className="p-8 flex flex-col flex-1 text-center items-center">
-                {/* Name + sub */}
-                <div className="mb-6 w-full" dir="ltr">
-                  <h3
-                    className="text-xl font-bold mb-1"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {tier.name}
-                  </h3>
-                  <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                    {tier.sub}
-                  </p>
+              <div className="p-7 sm:p-8 flex flex-col flex-1">
+                {/* Name + sub + price */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-white mb-1">{tier.name}</h3>
+                  <p className="text-sm text-white/40 mb-5">{tier.sub}</p>
                   <div
-                    className="mt-4 font-black"
+                    className="font-black leading-none"
                     style={{
                       fontFamily: "var(--font-space-mono)",
                       color: tier.featured ? "#8B7FFF" : "var(--text-primary)",
-                      fontSize: tier.featured ? "3rem" : "2.5rem",
-                      lineHeight: 1,
+                      fontSize: tier.featured ? "2.75rem" : "2.25rem",
                     }}
                   >
                     {tier.price}
@@ -169,25 +166,29 @@ export default function Pricing() {
                 </div>
 
                 {/* Divider */}
-                <div
-                  className="h-px mb-6 w-full"
-                  style={{ background: `${tier.accentBorder}` }}
-                />
+                <div className="h-px mb-6" style={{ background: `${tier.accentBorder}` }} />
 
-                {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1 w-full list-none pl-0" dir="ltr">
+                {/* Features — LEFT aligned, not centered */}
+                <ul className="space-y-3.5 mb-8 flex-1">
                   {tier.features.map((f) => (
                     <li
                       key={f}
-                      className="flex items-center justify-center gap-2.5 text-sm"
-                      style={{ color: "rgba(238,238,245,0.7)" }}
+                      className="flex items-start gap-3 text-sm text-white/65"
                     >
-                      <Check
-                        size={14}
-                        className="shrink-0"
-                        style={{ color: tier.featured ? "#8B7FFF" : "#64DFDF" }}
-                      />
-                      <span>{f}</span>
+                      <div
+                        className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                        style={{
+                          background: `${tier.accent}15`,
+                          border: `1px solid ${tier.accent}25`,
+                        }}
+                      >
+                        <Check
+                          size={11}
+                          strokeWidth={3}
+                          style={{ color: tier.accent }}
+                        />
+                      </div>
+                      <span className="leading-relaxed">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -195,21 +196,22 @@ export default function Pricing() {
                 {/* CTA Button */}
                 <button
                   onClick={() => openWhatsApp(tier.plan)}
-                  className="w-full py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 hover:scale-[1.03] active:scale-95"
+                  className="w-full py-3.5 rounded-2xl font-bold text-sm transition-all duration-300 hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
                   style={
-                    tier.btnStyle === "filled"
+                    tier.featured
                       ? {
                           background: "linear-gradient(135deg, #8B7FFF, #6A5FFF)",
                           color: "#fff",
-                          boxShadow: "0 8px 32px rgba(139,127,255,0.4)",
+                          boxShadow: "0 8px 32px rgba(139,127,255,0.35)",
                         }
                       : {
                           background: "rgba(255,255,255,0.05)",
-                          border: "1px solid rgba(255,255,255,0.12)",
+                          border: "1px solid rgba(255,255,255,0.1)",
                           color: "var(--text-primary)",
                         }
                   }
                 >
+                  <MessageSquare size={15} strokeWidth={2} />
                   {tier.btnLabel}
                 </button>
               </div>

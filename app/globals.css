@@ -84,6 +84,11 @@
   border-color: rgba(139, 127, 255, 0.4) !important;
 }
 
+/* ── Section transitions ── */
+section + section {
+  margin-top: -2rem;
+}
+
 :root {
   /* Backgrounds */
   --bg-deep: #06060C;
