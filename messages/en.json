@@ -31,9 +31,15 @@
     "s2_title": "AI Automation",
     "s2_desc": "Chatbot, AI voice receptionist, automatic CRM and lead tracking — save 20+ hours per week.",
     "s2_tag": "Save 20+ Hours/Week",
-    "s3_title": "Social Media & Marketing",
-    "s3_desc": "AI content, videos, posts and campaigns that convert customers and grow your sales.",
-    "s3_tag": "From 10 Posts/Month"
+    "s3_title": "Social Media & Advertising",
+    "s3_desc": "Facebook/Instagram/Google ads + AI content, videos and posts that convert — fully managed campaigns from A to Z.",
+    "s3_tag": "Ads + Content Included",
+    "s4_title": "Mobile & Web Apps",
+    "s4_desc": "Custom iOS/Android app, client portal, online booking — your business in your customers' pocket.",
+    "s4_tag": "Custom Quote",
+    "s5_title": "Order Without Wolt",
+    "s5_desc": "Your own online ordering page. 0% commission. Replace Wolt, Glovo and Uber Eats — keep 100% of your revenue.",
+    "s5_tag": "0% Commission"
   },
   "portfolio": {
     "label": "Portfolio",

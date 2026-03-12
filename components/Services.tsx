@@ -1,217 +1,143 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useRef } from "react";
 
 const serviceData = [
-  {
-    num: "01",
-    accent: "#8B7FFF",
-    imgUrl: "/images/Craftsman_in_modernized_shop_663f0bf1d1.jpeg",
-    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(20,16,50,0.82) 50%, rgba(139,127,255,0.18) 100%",
-    iconBg: "rgba(139,127,255,0.15)",
-    iconBorder: "rgba(139,127,255,0.3)",
-    tagBg: "rgba(139,127,255,0.12)",
-    tagBorder: "rgba(139,127,255,0.3)",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="4" width="20" height="14" rx="2.5" stroke="#8B7FFF" strokeWidth="1.6"/>
-        <path d="M2 8.5h20" stroke="#8B7FFF" strokeWidth="1.6"/>
-        <circle cx="5.5" cy="6.3" r="0.8" fill="#8B7FFF"/>
-        <circle cx="8" cy="6.3" r="0.8" fill="#8B7FFF" opacity="0.5"/>
-        <rect x="5" y="12" width="7" height="1.4" rx="0.7" fill="#8B7FFF" opacity="0.5"/>
-        <rect x="5" y="14.8" width="4.5" height="1.4" rx="0.7" fill="#8B7FFF" opacity="0.3"/>
-        <path d="M8 22h8M12 18v4" stroke="#8B7FFF" strokeWidth="1.6" strokeLinecap="round"/>
-      </svg>
-    ),
-  },
-  {
-    num: "02",
-    accent: "#64DFDF",
-    imgUrl: "/images/A_sleek_futuristic_workspace_at_night_a_large_curv_d0b0bcfb2e.jpeg",
-    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(10,30,35,0.82) 50%, rgba(100,223,223,0.18) 100%",
-    iconBg: "rgba(100,223,223,0.15)",
-    iconBorder: "rgba(100,223,223,0.3)",
-    tagBg: "rgba(100,223,223,0.1)",
-    tagBorder: "rgba(100,223,223,0.3)",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="3.5" stroke="#64DFDF" strokeWidth="1.6"/>
-        <circle cx="4.5" cy="6" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
-        <circle cx="19.5" cy="6" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
-        <circle cx="4.5" cy="18" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
-        <circle cx="19.5" cy="18" r="1.8" stroke="#64DFDF" strokeWidth="1.4" opacity="0.6"/>
-        <path d="M6.2 7l3.5 3M14.3 14l3.5 3.5M17.8 7l-3.5 3M9.7 14l-3.5 3.5" stroke="#64DFDF" strokeWidth="1.1" opacity="0.5"/>
-        <circle cx="12" cy="12" r="1.5" fill="#64DFDF" opacity="0.8"/>
-      </svg>
-    ),
-  },
-  {
-    num: "03",
-    accent: "#FF8A80",
-    imgUrl: "/images/Smartphone_showing_instagram_grid_6b420871da.jpeg",
-    gradient: "to top, rgba(6,6,18,0.95) 0%, rgba(35,12,12,0.82) 50%, rgba(255,138,128,0.18) 100%",
-    iconBg: "rgba(255,138,128,0.15)",
-    iconBorder: "rgba(255,138,128,0.3)",
-    tagBg: "rgba(255,138,128,0.1)",
-    tagBorder: "rgba(255,138,128,0.3)",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="4" width="11" height="14" rx="2" stroke="#FF8A80" strokeWidth="1.6"/>
-        <circle cx="17" cy="8" r="3.8" stroke="#FF8A80" strokeWidth="1.4" opacity="0.65"/>
-        <path d="M15.2 8h3.6M17 6.2V9.8" stroke="#FF8A80" strokeWidth="1.4" opacity="0.65" strokeLinecap="round"/>
-        <rect x="4.5" y="8" width="5.5" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.4"/>
-        <rect x="4.5" y="11" width="7" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.3"/>
-        <rect x="4.5" y="14" width="3.5" height="1.3" rx="0.65" fill="#FF8A80" opacity="0.2"/>
-      </svg>
-    ),
-  },
+  { num: "01", imgUrl: "/images/premium_websites_service_1773260963386.png", accent: "#ffffff" },
+  { num: "02", imgUrl: "/images/ai_automation_service_1773260977848.png", accent: "#f3f4f6" },
+  { num: "03", imgUrl: "/images/social_media_service_1773260995527.png", accent: "#e5e7eb" },
+  { num: "04", imgUrl: "/images/A_sleek_futuristic_workspace_at_night_a_large_curv_d0b0bcfb2e.jpeg", accent: "#d1d5db" },
+  { num: "05", imgUrl: "/images/Craftsman_in_modernized_shop_663f0bf1d1.jpeg", accent: "#d1d5db" },
 ];
+
+interface SvcData {
+  num: string;
+  imgUrl: string;
+  accent: string;
+  title: string;
+  desc: string;
+  tag: string;
+}
+
+function ServiceCard({ svc, variants }: { svc: SvcData; variants: object }) {
+  return (
+    <motion.div
+      variants={variants}
+      className="group relative rounded-[2rem] overflow-hidden flex flex-col cursor-pointer bg-black border border-white/10 hover:border-white/30 transition-colors duration-500"
+      style={{ minHeight: 600 }}
+    >
+      <div className="absolute inset-0 h-1/2 overflow-hidden bg-[#0a0a0a]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={svc.imgUrl}
+          alt={svc.title}
+          className="w-full h-full object-cover transition-transform duration-[1.5s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 opacity-70 group-hover:opacity-100 grayscale hover:grayscale-0"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+      </div>
+      <div className="relative z-10 flex flex-col h-full bg-gradient-to-t from-black via-black/95 to-transparent p-8 sm:p-10 justify-end mt-auto">
+        <div className="flex justify-between items-end mb-8 w-full">
+          <span className="text-6xl font-light tracking-tighter text-white/20 group-hover:text-white transition-colors duration-500">
+            {svc.num}
+          </span>
+          <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white/5 border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500 text-white translate-y-4 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+            <ArrowUpRight strokeWidth={1.5} size={20} />
+          </div>
+        </div>
+        <div className="space-y-4">
+          <h3 className="text-3xl font-bold text-white leading-tight tracking-tight">
+            {svc.title}
+          </h3>
+          <p className="text-white/70 leading-relaxed font-light text-base">
+            {svc.desc}
+          </p>
+        </div>
+        <div className="mt-8 pt-6 border-t border-white/10">
+          <span className="text-xs font-mono font-medium uppercase tracking-[0.2em] text-white/70 group-hover:text-white transition-colors duration-300">
+            {svc.tag}
+          </span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Services() {
   const t = useTranslations("services");
-
+  const containerRef = useRef<HTMLDivElement>(null);
+  
   const services = [
     { title: t("s1_title"), desc: t("s1_desc"), tag: t("s1_tag"), ...serviceData[0] },
     { title: t("s2_title"), desc: t("s2_desc"), tag: t("s2_tag"), ...serviceData[1] },
     { title: t("s3_title"), desc: t("s3_desc"), tag: t("s3_tag"), ...serviceData[2] },
+    { title: t("s4_title"), desc: t("s4_desc"), tag: t("s4_tag"), ...serviceData[3] },
+    { title: t("s5_title"), desc: t("s5_desc"), tag: t("s5_tag"), ...serviceData[4] },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.1 } }
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
+    visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const } }
+  };
+
   return (
-    <section id="services" className="relative z-10 py-28 px-4 sm:px-6 overflow-x-hidden">
-      {/* Section divider glow */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-px pointer-events-none"
-        style={{ background: "linear-gradient(90deg, transparent, rgba(139,127,255,0.4), transparent)" }}
-      />
-
-      <div className="max-w-6xl mx-auto w-full">
-
-        {/* Header */}
+    <section id="services" ref={containerRef} className="relative z-10 py-32 px-6 overflow-hidden bg-black">
+      <div className="max-w-[1400px] mx-auto w-full">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 md:mb-20 px-2"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          className="mb-24 px-2"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full mb-6 text-[11px] font-mono font-bold uppercase tracking-[0.25em] bg-[var(--accent-lavender)]/10 border border-[var(--accent-lavender)]/20 text-[var(--accent-lavender)]">
-            {t("label")}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-[52px] font-black text-white mb-5 leading-[1.1] tracking-tight">
-            {t("title")}
-          </h2>
-          <p className="text-base md:text-lg text-white/50 max-w-lg mx-auto leading-relaxed">
-            {t("subtitle")}
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-12">
+            <div className="max-w-3xl">
+              <span className="inline-block px-4 py-1.5 rounded-full mb-8 text-xs font-mono font-medium uppercase tracking-[0.25em] bg-white text-black">
+                {t("label")}
+              </span>
+              <h2 className="text-5xl md:text-7xl lg:text-[6rem] font-bold text-white leading-[0.95] tracking-tighter">
+                {t("title")}
+              </h2>
+            </div>
+            <p className="text-lg md:text-xl text-white/70 max-w-md leading-relaxed font-light">
+              {t("subtitle")}
+            </p>
+          </div>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 w-full">
-          {services.map((svc, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="group relative rounded-[22px] overflow-hidden flex flex-col cursor-pointer transition-transform duration-500 hover:-translate-y-1"
-              style={{ minHeight: 380 }}
-            >
-              {/* Background image — local images */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={svc.imgUrl}
-                alt=""
-                aria-hidden
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
+        <div className="space-y-8 w-full">
+          {/* Row 1 — 3 cards */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full"
+          >
+            {services.slice(0, 3).map((svc, i) => (
+              <ServiceCard key={i} svc={svc} variants={itemVariants} />
+            ))}
+          </motion.div>
 
-              {/* Gradient overlay */}
-              <div
-                className="absolute inset-0"
-                style={{ background: `linear-gradient(${svc.gradient})` }}
-              />
-
-              {/* Border */}
-              <div
-                className="absolute inset-0 rounded-[22px] transition-all duration-500"
-                style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-              />
-              {/* Hover border glow */}
-              <div
-                className="absolute inset-0 rounded-[22px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ boxShadow: `inset 0 0 0 1.5px ${svc.accent}55, 0 30px 70px ${svc.accent}12` }}
-              />
-              {/* Top shimmer line */}
-              <div
-                className="absolute top-0 inset-x-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-600 origin-center"
-                style={{ background: `linear-gradient(90deg, transparent, ${svc.accent}, transparent)` }}
-              />
-
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full p-7 sm:p-8 gap-3">
-
-                {/* Top row: icon + number */}
-                <div className="flex items-start justify-between">
-                  <div
-                    className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                    style={{
-                      background: svc.iconBg,
-                      border: `1px solid ${svc.iconBorder}`,
-                      backdropFilter: "blur(8px)",
-                    }}
-                  >
-                    {svc.icon}
-                  </div>
-                  <span
-                    className="text-[11px] font-mono font-bold tracking-widest mt-1"
-                    style={{ color: `${svc.accent}60` }}
-                  >
-                    {svc.num}
-                  </span>
-                </div>
-
-                {/* Spacer to push content to bottom */}
-                <div className="flex-1 min-h-[60px]" />
-
-                {/* Title */}
-                <h3 className="text-xl sm:text-[22px] font-extrabold text-white leading-snug tracking-tight">
-                  {svc.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-[13.5px] text-white/55 leading-[1.75]">
-                  {svc.desc}
-                </p>
-
-                {/* Footer: tag + arrow */}
-                <div className="flex items-center justify-between pt-4 mt-auto border-t border-white/[0.06]">
-                  <span
-                    className="text-[10px] font-mono font-black uppercase tracking-widest px-3 py-1.5 rounded-full"
-                    style={{
-                      background: svc.tagBg,
-                      border: `1px solid ${svc.tagBorder}`,
-                      color: svc.accent,
-                    }}
-                  >
-                    {svc.tag}
-                  </span>
-                  <div
-                    className="w-9 h-9 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
-                    style={{
-                      background: `${svc.accent}15`,
-                      color: svc.accent,
-                      border: `1px solid ${svc.accent}25`,
-                    }}
-                  >
-                    <ArrowUpRight size={15} strokeWidth={2.5} />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Row 2 — 2 cards centered */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full lg:w-2/3 mx-auto"
+          >
+            {services.slice(3).map((svc, i) => (
+              <ServiceCard key={i + 3} svc={svc} variants={itemVariants} />
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

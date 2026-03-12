@@ -32,9 +32,15 @@
     "s2_title": "Automatisation IA",
     "s2_desc": "Chatbot, réceptionniste vocale AI, CRM automatique — économisez 20h+ par semaine.",
     "s2_tag": "Économisez 20h+/semaine",
-    "s3_title": "Réseaux Sociaux",
-    "s3_desc": "Contenu AI, vidéos, posts et campagnes qui convertissent et développent vos ventes.",
-    "s3_tag": "Dès 10 posts/mois"
+    "s3_title": "Réseaux Sociaux & Publicité",
+    "s3_desc": "Publicités Facebook/Instagram/Google + contenu AI, vidéos et posts qui convertissent — campagnes managées de A à Z.",
+    "s3_tag": "Pub + Contenu inclus",
+    "s4_title": "Applications Mobiles & Web",
+    "s4_desc": "App iOS/Android sur mesure, espace client, réservation en ligne — votre business dans la poche de vos clients.",
+    "s4_tag": "Devis personnalisé",
+    "s5_title": "Commandez sans Wolt",
+    "s5_desc": "Votre propre page de commandes en ligne. 0% de commission. Remplacez Wolt, Glovo et Uber Eats — gardez 100% de vos revenus.",
+    "s5_tag": "0% de commission"
   },
   "portfolio": {
     "label": "Portfolio",
